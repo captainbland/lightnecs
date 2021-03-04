@@ -1,7 +1,7 @@
 import sequtils
 import tables
-import ../components/component
-import ../systems/my_system
+import ../ecslib/component
+import ../ecslib/my_system
 import entity
 
 type

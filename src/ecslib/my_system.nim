@@ -1,4 +1,4 @@
-import ../components/component
+import ../ecslib/component
 import hashes
 
 type

@@ -1,4 +1,4 @@
-import component
+import ../ecslib/component
 import sugar
 
 

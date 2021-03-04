@@ -2,8 +2,8 @@ import system
 import hashes
 
 import ../components/printable_component
-import ../components/component
-import my_system
+import ../ecslib/component
+import ../ecslib/my_system
 
 type
     PrintingSystem* = ref object of MySystem

@@ -1,8 +1,8 @@
 import ../components/printable_component
-import ../components/component
+import ../ecslib/component
 import ../systems/printing_system 
-import entity
-import world
+import ../ecslib/entity
+import ../ecslib/world
 import tables
 
 
