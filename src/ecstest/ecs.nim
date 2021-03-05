@@ -1,4 +1,4 @@
-import nimprof
+#import nimprof
 
 
 import ../components/printable_component
@@ -17,11 +17,11 @@ import tables
 template my_world(): var World =
     var world = newWorld()
 
-    for x in 0..2000:
+    for x in 0..500:
         var my_entity = newEntity()
         discard my_entity.addComponent(PrintableComponent(my_data: "this is mine!")).addComponent(AppendingComponent(to_append: "this gets appended!"))
 
-        discard world.registerSystem(AppendingSystem(name: "appending system"), APPENDING_COMPONENT_TYPE)
+        discard world.registerSystem(AppendingSystem(name: "appending system"), APPENDING_COMPONENT_TYPE, PRINTABLE_COMPONENT_TYPE)
         .registerSystem(PrintingSystem(name: "printing system!"), PRINTABLE_COMPONENT_TYPE)
                         
         discard world.addEntity(my_entity)

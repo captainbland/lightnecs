@@ -14,8 +14,8 @@ method run*(self: PrintingSystem, entities: seq[Entity]) =
     
     for entity in entities:
         for component in entity.getComponents(PRINTABLE_COMPONENT_TYPE)[]:
-            discard
-                # PrintableComponent(component).my_data = "."
+                discard
+                #echo PrintableComponent(component).my_data
             
 
 const HASH = "PrintingSystem".hash()
