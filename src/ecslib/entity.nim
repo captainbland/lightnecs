@@ -14,7 +14,7 @@ type
         components: Table[ComponentType, seq[Component]]
         component_types: HashSet[ComponentType]
         component_type_combinations*: HashSet[HashSet[ComponentType]]
-        id: int64
+        id*: int64
 
 proc newEntity*(): Entity =
     id_gen += 1

@@ -2,7 +2,7 @@ import re
 import hashes
 
 type
-    Component* = ref object of RootObj
+    Component* = object
         component_type*: string
         
     ComponentType* = Hash
