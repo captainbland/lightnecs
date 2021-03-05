@@ -1,0 +1,87 @@
+total executions of each stack trace:
+Entry: 1/44 Calls: 209/265 = 78.87% [sum: 209; 209/265 = 78.87%]
+  C:\Users\Jaron\.choosenim\toolchains\nim-1.4.2\lib\system\iterators.nim: run 211/265 = 79.62%
+  c:\Users\Jaron\Documents\nimgame\src\ecslib\my_system.nim: run 211/265 = 79.62%
+  c:\Users\Jaron\Documents\nimgame\src\ecslib\world.nim: runSystems 211/265 = 79.62%
+  c:\Users\Jaron\Documents\nimgame\src\ecstest\ecs.nim: mytest 211/265 = 79.62%
+  c:\Users\Jaron\Documents\nimgame\src\ecstest\ecs.nim: ecs 264/265 = 99.62%
+Entry: 2/44 Calls: 3/265 = 1.13% [sum: 212; 212/265 = 80.00%]
+  C:\Users\Jaron\.choosenim\toolchains\nim-1.4.2\lib\system.nim: align 4/265 = 1.51%
+  C:\Users\Jaron\.choosenim\toolchains\nim-1.4.2\lib\system\assign.nim: genericAssignAux 26/265 = 9.81%
+  C:\Users\Jaron\.choosenim\toolchains\nim-1.4.2\lib\system\assign.nim: genericAssign 28/265 = 10.57%
+  C:\Users\Jaron\.choosenim\toolchains\nim-1.4.2\lib\system\assign.nim: genericSeqAssign 30/265 = 11.32%
+  C:\Users\Jaron\.choosenim\toolchains\nim-1.4.2\lib\pure\collections\tableimpl.nim: rawInsert 22/265 = 8.30%
+  C:\Users\Jaron\.choosenim\toolchains\nim-1.4.2\lib\pure\collections\tables.nim: enlarge 16/265 = 6.04%
+  C:\Users\Jaron\.choosenim\toolchains\nim-1.4.2\lib\pure\collections\tableimpl.nim: []= 31/265 = 11.70%
+  c:\Users\Jaron\Documents\nimgame\src\ecslib\world.nim: registerSystem 27/265 = 10.19%
+  c:\Users\Jaron\Documents\nimgame\src\ecstest\ecs.nim: ecs 264/265 = 99.62%
+Entry: 3/44 Calls: 3/265 = 1.13% [sum: 215; 215/265 = 81.13%]
+  C:\Users\Jaron\.choosenim\toolchains\nim-1.4.2\lib\system\comparisons.nim: <=% 18/265 = 6.79%
+  C:\Users\Jaron\.choosenim\toolchains\nim-1.4.2\lib\system\gc.nim: newObj 16/265 = 6.04%
+  C:\Users\Jaron\.choosenim\toolchains\nim-1.4.2\lib\system\gc.nim: newSeq 11/265 = 4.15%
+  C:\Users\Jaron\.choosenim\toolchains\nim-1.4.2\lib\system.nim: newSeq 11/265 = 4.15%
+  c:\Users\Jaron\Documents\nimgame\src\ecslib\entity.nim: addComponent 16/265 = 6.04%
+  c:\Users\Jaron\Documents\nimgame\src\ecstest\ecs.nim: ecs 264/265 = 99.62%
+Entry: 4/44 Calls: 3/265 = 1.13% [sum: 218; 218/265 = 82.26%]
+  C:\Users\Jaron\.choosenim\toolchains\nim-1.4.2\lib\system\comparisons.nim: <=% 18/265 = 6.79%
+  C:\Users\Jaron\.choosenim\toolchains\nim-1.4.2\lib\system\gc.nim: newObj 16/265 = 6.04%
+  C:\Users\Jaron\.choosenim\toolchains\nim-1.4.2\lib\system\gc.nim: newSeq 11/265 = 4.15%
+  C:\Users\Jaron\.choosenim\toolchains\nim-1.4.2\lib\system.nim: @ 3/265 = 1.13%
+  c:\Users\Jaron\Documents\nimgame\src\ecslib\world.nim: registerSystem 27/265 = 10.19%
+  c:\Users\Jaron\Documents\nimgame\src\ecstest\ecs.nim: ecs 264/265 = 99.62%
+Entry: 5/44 Calls: 2/265 = 0.75% [sum: 220; 220/265 = 83.02%]
+  C:\Users\Jaron\.choosenim\toolchains\nim-1.4.2\lib\system\arithmetics.nim: -% 9/265 = 3.40%
+  C:\Users\Jaron\.choosenim\toolchains\nim-1.4.2\lib\system\gc.nim: usrToCell 6/265 = 2.26%
+  C:\Users\Jaron\.choosenim\toolchains\nim-1.4.2\lib\system\gc.nim: asgnRef 7/265 = 2.64%
+  C:\Users\Jaron\.choosenim\toolchains\nim-1.4.2\lib\pure\collections\tables.nim: enlarge 16/265 = 6.04%
+  C:\Users\Jaron\.choosenim\toolchains\nim-1.4.2\lib\pure\collections\tableimpl.nim: []= 31/265 = 11.70%
+  c:\Users\Jaron\Documents\nimgame\src\ecslib\world.nim: registerSystem 27/265 = 10.19%
+  c:\Users\Jaron\Documents\nimgame\src\ecstest\ecs.nim: ecs 264/265 = 99.62%
+Entry: 6/44 Calls: 2/265 = 0.75% [sum: 222; 222/265 = 83.77%]
+  C:\Users\Jaron\.choosenim\toolchains\nim-1.4.2\lib\system\comparisons.nim: <=% 18/265 = 6.79%
+  C:\Users\Jaron\.choosenim\toolchains\nim-1.4.2\lib\system\gc_common.nim: isOnStack 5/265 = 1.89%
+  C:\Users\Jaron\.choosenim\toolchains\nim-1.4.2\lib\system\gc.nim: unsureAsgnRef 8/265 = 3.02%
+  C:\Users\Jaron\.choosenim\toolchains\nim-1.4.2\lib\system\assign.nim: genericAssignAux 26/265 = 9.81%
+  C:\Users\Jaron\.choosenim\toolchains\nim-1.4.2\lib\system\assign.nim: genericAssign 28/265 = 10.57%
+  C:\Users\Jaron\.choosenim\toolchains\nim-1.4.2\lib\system\assign.nim: genericSeqAssign 30/265 = 11.32%
+  C:\Users\Jaron\.choosenim\toolchains\nim-1.4.2\lib\pure\collections\tableimpl.nim: rawInsert 22/265 = 8.30%
+  C:\Users\Jaron\.choosenim\toolchains\nim-1.4.2\lib\pure\collections\tables.nim: enlarge 16/265 = 6.04%
+  C:\Users\Jaron\.choosenim\toolchains\nim-1.4.2\lib\pure\collections\tableimpl.nim: []= 31/265 = 11.70%
+  c:\Users\Jaron\Documents\nimgame\src\ecslib\world.nim: registerSystem 27/265 = 10.19%
+  c:\Users\Jaron\Documents\nimgame\src\ecstest\ecs.nim: ecs 264/265 = 99.62%
+Entry: 7/44 Calls: 2/265 = 0.75% [sum: 224; 224/265 = 84.53%]
+  C:\Users\Jaron\.choosenim\toolchains\nim-1.4.2\lib\system\comparisons.nim: <=% 18/265 = 6.79%
+  C:\Users\Jaron\.choosenim\toolchains\nim-1.4.2\lib\system\gc.nim: newObj 16/265 = 6.04%
+  C:\Users\Jaron\.choosenim\toolchains\nim-1.4.2\lib\system\gc.nim: newSeq 11/265 = 4.15%
+  C:\Users\Jaron\.choosenim\toolchains\nim-1.4.2\lib\system\assign.nim: genericAssignAux 26/265 = 9.81%
+  C:\Users\Jaron\.choosenim\toolchains\nim-1.4.2\lib\system\assign.nim: genericAssign 28/265 = 10.57%
+  C:\Users\Jaron\.choosenim\toolchains\nim-1.4.2\lib\system\assign.nim: genericSeqAssign 30/265 = 11.32%
+  c:\Users\Jaron\Documents\nimgame\src\ecslib\entity.nim: addComponent 16/265 = 6.04%
+  c:\Users\Jaron\Documents\nimgame\src\ecstest\ecs.nim: ecs 264/265 = 99.62%
+Entry: 8/44 Calls: 2/265 = 0.75% [sum: 226; 226/265 = 85.28%]
+  C:\Users\Jaron\.choosenim\toolchains\nim-1.4.2\lib\system\assign.nim: genericAssignAux 26/265 = 9.81%
+  C:\Users\Jaron\.choosenim\toolchains\nim-1.4.2\lib\system\assign.nim: genericAssignAux 26/265 = 9.81%
+  C:\Users\Jaron\.choosenim\toolchains\nim-1.4.2\lib\system\assign.nim: genericAssign 28/265 = 10.57%
+  C:\Users\Jaron\.choosenim\toolchains\nim-1.4.2\lib\system\assign.nim: genericSeqAssign 30/265 = 11.32%
+  C:\Users\Jaron\.choosenim\toolchains\nim-1.4.2\lib\pure\collections\tableimpl.nim: []= 31/265 = 11.70%
+  c:\Users\Jaron\Documents\nimgame\src\ecslib\entity.nim: addComponent 16/265 = 6.04%
+  c:\Users\Jaron\Documents\nimgame\src\ecstest\ecs.nim: ecs 264/265 = 99.62%
+Entry: 9/44 Calls: 2/265 = 0.75% [sum: 228; 228/265 = 86.04%]
+  c:\Users\Jaron\Documents\nimgame\src\ecslib\entity.nim: getComponents 2/265 = 0.75%
+  c:\Users\Jaron\Documents\nimgame\src\systems\printing_system.nim: run 211/265 = 79.62%
+  c:\Users\Jaron\Documents\nimgame\src\ecslib\my_system.nim: run 211/265 = 79.62%
+  c:\Users\Jaron\Documents\nimgame\src\ecslib\world.nim: runSystems 211/265 = 79.62%
+  c:\Users\Jaron\Documents\nimgame\src\ecstest\ecs.nim: mytest 211/265 = 79.62%
+  c:\Users\Jaron\Documents\nimgame\src\ecstest\ecs.nim: ecs 264/265 = 99.62%
+Entry: 10/44 Calls: 2/265 = 0.75% [sum: 230; 230/265 = 86.79%]
+  C:\Users\Jaron\.choosenim\toolchains\nim-1.4.2\lib\system\assign.nim: genericSeqAssign 30/265 = 11.32%
+  C:\Users\Jaron\.choosenim\toolchains\nim-1.4.2\lib\pure\collections\tableimpl.nim: rawInsert 22/265 = 8.30%
+  C:\Users\Jaron\.choosenim\toolchains\nim-1.4.2\lib\pure\collections\tables.nim: enlarge 16/265 = 6.04%
+  C:\Users\Jaron\.choosenim\toolchains\nim-1.4.2\lib\pure\collections\tableimpl.nim: []= 31/265 = 11.70%
+  c:\Users\Jaron\Documents\nimgame\src\ecslib\world.nim: registerSystem 27/265 = 10.19%
+  c:\Users\Jaron\Documents\nimgame\src\ecstest\ecs.nim: ecs 264/265 = 99.62%
+Entry: 11/44 Calls: 2/265 = 0.75% [sum: 232; 232/265 = 87.55%]
+  C:\Users\Jaron\.choosenim\toolchains\nim-1.4.2\lib\system\arithmetics.nim: +% 9/265 = 3.40%
+  C:\Users\Jaron\.choosenim\toolchains\nim-1.4.2\lib\system\alloc.nim: rawAlloc 3/265 = 1.13%
+  C:\Users\Jaron\.choosenim\toolchains\nim-1.4.2\lib\system\gc.nim: newObj 16/265 = 6.04%
+  c:\Users\Jaron\Documents\nimgame\src\ecstest\ecs.nim: ecs 264/265 = 99.62%

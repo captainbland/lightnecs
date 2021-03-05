@@ -1,14 +1,26 @@
+import re
+import hashes
+
 type
     Component* = ref object of RootObj
         component_type*: string
         
-    ComponentType* = string
+    ComponentType* = Hash
 
     NotImplementedException* = object of Exception
 
-template generate_typeinfo*(my_type: untyped, my_typename: string): untyped =
+
+# proc camel_to_const_case(my_string: string): string  {.compileTime.} =
+#     my_string.replace(re"([a-z])([A-Z])", "?_?")  
+
+proc print_typename(typename: string): void {.compileTime.} =
+    echo "here's the thing: ", typename
+
+template generate_typeinfo*(my_type: untyped, component_type: ComponentType): untyped =
     method typename*(x: my_type): ComponentType = 
-        return my_typename.ComponentType
+        return component_type
+
+
 
 method typename*(x: Component): ComponentType = 
     raise newException(NotImplementedException, "NotImplemented")
