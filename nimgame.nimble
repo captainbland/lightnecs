@@ -12,3 +12,4 @@ bin           = @["nimgame"]
 
 requires "nim >= 1.4.0"
 requires "csfml"
+requires "print"

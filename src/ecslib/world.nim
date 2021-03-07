@@ -13,7 +13,6 @@ import ../systems/printing_system
 
 type
     World* = ref object of RootObj
-        entities: Table[ComponentType, seq[Entity]]
         component_systems: Table[MySystem, Entity]
     
 template newWorld*(): World =
