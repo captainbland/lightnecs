@@ -3,7 +3,6 @@ import my_system
 import entity 
 import sets
 import tables
-import typeutil
 import intsets
 
 type

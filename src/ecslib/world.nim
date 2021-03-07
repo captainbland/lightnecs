@@ -1,10 +1,7 @@
-import sequtils
 import tables
-import sugar
 import sets
 
 import ../ecslib/component
-import ../ecslib/my_system
 import entity
 
 import component_list
