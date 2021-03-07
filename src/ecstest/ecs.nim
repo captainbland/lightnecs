@@ -38,7 +38,7 @@ my_world.addComponent(my_entity, my_appending_component)
 
 
 proc mytest() =
-    for x in 0..1000:
+    for x in 0..10000:
         my_appending_system.run(my_world)
         my_printing_system.run(my_world)
     

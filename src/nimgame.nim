@@ -1,59 +1,53 @@
-import csfml
+import sdl2
+import os
+import ecslib/world
+import ecslib/component
+import components/draw_rect_component
+import systems/draw_rect_system
 
-let videoMode = videoMode(200, 200)
-let settings = contextSettings(depth=32, antialiasing=8)
-var window = newRenderWindow(videoMode, "Shapes", settings=settings)
-window.verticalSyncEnabled = true
+discard sdl2.init(INIT_EVERYTHING)
 
-while window.open:
-    var event: Event
-    while window.pollEvent(event):
-        case event.kind
-          of EventType.Closed:
-            window.close()
-          else: discard
-    
-    window.clear Black
+var
+  window: WindowPtr
+  render: RendererPtr
 
-    # Top left
-    var vertexArray = newVertexArray(PrimitiveType.Triangles)
-    vertexArray.append vertex(vec2(0, 0), Green)
-    vertexArray.append vertex(vec2(100, 0), Red)
-    vertexArray.append vertex(vec2(0, 100), Blue)
-    window.draw vertexArray
-    vertexArray.destroy()
+var my_world: World = getWorld()
+echo my_world.am_world
 
-    # Top right
-    var vertexSeq = @[
-        vertex(vec2(200, 0), Green),
-        vertex(vec2(100, 0), Red),
-        vertex(vec2(200, 100), Blue),
-    ]
-    window.drawPrimitives(addr(vertexSeq[0]), vertexSeq.len,
-                          PrimitiveType.Triangles, renderStates())
-    
-    # Bottom left
-    var convexShape = newConvexShape(3)
-    convexShape[0] = vec2(0, 200)
-    convexShape[1] = vec2(100, 200)
-    convexShape[2] = vec2(0, 100)
-    convexShape.fillColor = Green
-    window.draw convexShape
-    convexShape.destroy()
-    
-    # Bottom right
-    proc getPointCount(p: pointer): int {.cdecl.} = 3
-    proc getPoint(index: int, p: pointer): Vector2f {.cdecl.} =
-        case index
-        of 0: vec2(200, 200)
-        of 1: vec2(100, 200)
-        else: vec2(200, 100)
-    var customShape = newShape(getPointCount, getPoint, nil)
-    customShape.update()
-    customShape.fillColor = Green
-    window.draw customShape
-    customShape.destroy()
-    
-    window.display()
+let draw_rect_sys = my_world.registerSystem(DrawRectSystem())
+my_world.setSystemSignature(draw_rect_sys, newSignature(getComponentType[DrawRectComponent](my_world)))
 
-window.destroy()
+let my_entity = my_world.createEntity()
+my_world.addComponent(my_entity, DrawRectComponent(x:10, y:10, width:50, height:50))
+
+let my_entity2 = my_world.createEntity()
+my_world.addComponent(my_entity2, DrawRectComponent(x:100, y:10, width:50, height:50))
+
+
+let my_entity3 = my_world.createEntity()
+my_world.addComponent(my_entity3, DrawRectComponent(x:200, y:30, width:50, height:50))
+
+window = createWindow("SDL Skeleton", 100, 100, 640,480, SDL_WINDOW_SHOWN)
+render = createRenderer(window, -1, Renderer_Accelerated or Renderer_PresentVsync or Renderer_TargetTexture)
+
+
+
+
+var
+  evt = sdl2.defaultEvent
+  runGame = true
+
+while runGame:
+  while pollEvent(evt):
+    if evt.kind == QuitEvent:
+      runGame = false
+      break
+  sleep(16)
+  render.setDrawColor 0,0,0,255
+  render.clear
+  draw_rect_sys.run(my_world, render)
+  render.present
+
+destroy render
+destroy window
+
