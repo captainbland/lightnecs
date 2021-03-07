@@ -1,9 +1,11 @@
-import ../ecslib/component
-import sugar
+import ../ecslib/typeutil
+
 import hashes
 
 type
-    PrintableComponent* = object
+    PrintableComponent* = ref object of RootObj 
         my_data*: string
 
-generate_typeinfo(PrintableComponent)
+#generate_typeinfo(PrintableComponent)
+
+proc type_hash*(c: PrintableComponent): Hash = hash($PRINTABLE_COMPONENT)

@@ -1,7 +1,7 @@
-import ../ecslib/component
+import ../ecslib/typeutil
 import hashes
 type
-    AppendingComponent* = object 
+    AppendingComponent* = ref object of RootObj 
         to_append*: string
 
-generate_typeinfo(AppendingComponent)
+proc type_hash*(c: AppendingComponent): Hash = hash($APPENDING_COMPONENT)

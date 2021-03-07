@@ -1,6 +1,7 @@
 import ../ecslib/entity
 import hashes
 import typeutil
+import sets
 
 type
     SystemConcept* = concept system, entities
@@ -9,7 +10,7 @@ type
     MySystem* = ref object of RootObj
         name*: string
         hash*: Hash
-        entities*: set[Entity]
+        entities*: HashSet[Entity]
     
     SystemType* = Hash
 
@@ -20,6 +21,3 @@ method run*(system: MySystem, entities: seq[Entity]): void =
      echo "I am not implemented!"
 
 generate_typeinfo(MySystem)
-
-proc print_typehash[T](): void = echo type_hash[T]()
-print_typehash[MySystem]()

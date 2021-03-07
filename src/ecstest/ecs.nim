@@ -13,27 +13,35 @@ import ../ecslib/entity
 import ../ecslib/world
 import tables
 
+var my_world: World = getWorld()
+echo my_world.am_world
 
-template my_world(): var World =
-    var world = newWorld()
+let my_printing_system = my_world.registerSystem(PrintingSystem())
+my_world.setSystemSignature(my_printing_system, newSignature(getComponentType[PrintableComponent](my_world)))
 
-    for x in 0..500:
-        var my_entity = newEntity()
-        discard my_entity.addComponent(PrintableComponent(my_data: "this is mine!")).addComponent(AppendingComponent(to_append: "this gets appended!"))
+let my_appending_system = my_world.registerSystem(AppendingSystem())
+my_world.setSystemSignature(my_appending_system, newSignature(getComponentType[AppendingComponent](my_world), getComponentType[PrintableComponent](my_world)))
 
-        discard world.registerSystem(AppendingSystem(name: "appending system"), APPENDING_COMPONENT_TYPE, PRINTABLE_COMPONENT_TYPE)
-        .registerSystem(PrintingSystem(name: "printing system!"), PRINTABLE_COMPONENT_TYPE)
-                        
-        discard world.addEntity(my_entity)
-    world
+let my_entity = my_world.createEntity()
 
-proc mytest(world: var World) =
 
-    for x in 0..1:
-        world.runSystems()
+echo "my entity", my_entity
+var my_printable_component = PrintableComponent(my_data: "i am a printable component")
+var my_appending_component = AppendingComponent(to_append: ": let's append this")
+my_world.addComponent(my_entity, my_printable_component)
+my_world.addComponent(my_entity, my_appending_component)
+
+
+
+# template my_world(): var World =
+
+
+
+proc mytest() =
+    for x in 0..1000:
+        my_appending_system.run(my_world)
+        my_printing_system.run(my_world)
     
-    #echo PrintableComponent(my_entity.getComponents($PRINTABLE_COMPONENT)[0]).my_data
-
 
 
 import times, os, strutils
@@ -46,10 +54,10 @@ template benchmark(benchmarkName: string, code: untyped) =
     let elapsedStr = elapsed.formatFloat(format = ffDecimal, precision = 3)
     echo "CPU Time [", benchmarkName, "] ", elapsedStr, "s"
 
-var test_world = my_world()
-benchmark("thing", mytest(test_world))
 
-# let some_component: Component = PrintableComponent(my_data: "hi")
-# PrintingSystem().run(some_component)
+benchmark("thing", mytest())
 
-# echo string(some_component.typename)
+# # let some_component: Component = PrintableComponent(my_data: "hi")
+# # PrintingSystem().run(some_component)
+
+# # echo string(some_component.typename)
