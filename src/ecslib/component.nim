@@ -2,6 +2,7 @@ import re
 import hashes
 import math
 import intsets
+import typeutil
 
 const MAX_COMPONENT_TYPES = 2^8
 
@@ -16,7 +17,7 @@ type
     Signature* = IntSet
 
     HasComponentType* = concept comp, comp_type
-        getComponentType(comp): comp_type
+        getComponentType[comp](): comp_type
 
 
 
@@ -26,12 +27,8 @@ type
 proc print_typename(typename: string): void {.compileTime.} =
     echo "here's the thing: ", typename
 
-template generate_typeinfo*(my_type: untyped, component_type: ComponentType): untyped =
-    method typename*(x: my_type): ComponentType = 
-        return component_type
 
 
+generate_typeinfo(Component)
 
-method typename*(x: Component): ComponentType = 
-    raise newException(NotImplementedException, "NotImplemented")
-
+echo type_hash[Component()]()
