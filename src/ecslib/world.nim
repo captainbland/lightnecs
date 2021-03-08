@@ -29,7 +29,7 @@ proc getWorld*(): World =
 proc createEntity*(self: World): Entity =
     return self.entity_manager.newEntity()
 
-proc addComponent*[T](self: var World, entity: Entity, component: T): void =
+proc addComponent*[T](self: World, entity: Entity, component: T): void =
     getComponentList[T]().addEntityComponent(entity, component)
     var signature = self.entityManager.getSignature(entity)
     signature.incl(getComponentList[T]().getComponentTypeFromList())
