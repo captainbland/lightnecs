@@ -31,7 +31,7 @@ let player_entity = createEntity(my_world,
  PlayerInputComponent(),
  ParentComponent(entity:root_entity))
 
-createEntity(my_world,
+let player_entity_2 = createEntity(my_world,
  DrawRectComponent(width: 50, height: 50),
  AbsolutePositionComponent(), 
  RelativePositionComponent(x:100, y: 10), 
@@ -42,7 +42,8 @@ createEntity(my_world,
  DrawRectComponent(width:50, height:50), 
  AbsolutePositionComponent(), 
  RelativePositionComponent(x: 70, y: 10),
- ParentComponent(entity: root_entity))
+ PlayerInputComponent(),
+ ParentComponent(entity: player_entity_2))
 
 createEntity(my_world,
  DrawRectComponent(width:50, height:50), 
