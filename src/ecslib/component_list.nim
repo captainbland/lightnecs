@@ -9,9 +9,9 @@ type
     ComponentTypeMap = ref object of RootObj
         component_types*: Table[Hash, ComponentType]
 
-proc getComponentTypeMap(): ComponentTypeMap =
-    #global considered ok because component types are a program-level concept
-    var type_mape {.global.}: ComponentTypeMap = ComponentTypeMap(component_types: initTable[Hash, ComponentType]())
+# proc getComponentTypeMap(): ComponentTypeMap =
+#     #global considered ok because component types are a program-level concept
+#     var type_mape {.global.}: ComponentTypeMap = ComponentTypeMap(component_types: initTable[Hash, ComponentType]())
 
 
 type
@@ -22,8 +22,9 @@ type
     
 proc newComponentList*[T](): ComponentList[T] =
     component_type_counter += 1
-
-    return ComponentList[T](component_list: @[], component_type_id: component_type_counter)
+    var list = ComponentList[T](component_list: @[], component_type_id: component_type_counter)
+    for x in list.entity_index_list.mitems(): x = -1
+    return list
 
 proc getComponentTypeFromList*[T](self: ComponentList[T]): ComponentType = 
     self.component_type_id
@@ -43,3 +44,7 @@ proc addEntityComponent*[T](self: ComponentList[T], entity: Entity, component: T
 proc getComponentFromList*[T](self: ComponentList[T], entity: Entity): T =
     let linked_index = self.entity_index_list[entity]
     self.component_list[linked_index]
+
+proc maybeGetComponentFromList*[T](self: ComponentList[T], entity: Entity): Option[T] =
+    let linked_index = self.entity_index_list[entity]
+    return if linked_index > -1: some(self.component_list[linked_index]) else: none(T)

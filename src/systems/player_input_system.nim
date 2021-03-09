@@ -37,7 +37,7 @@ proc on_poll*(self: PlayerInputSystem, my_world: World, event: ptr Event) =
 proc on_update*(self: PlayerInputSystem, my_world: World, dt: float) = 
     for entity in self.entities:
         let input = getComponent[PlayerInputComponent](my_world, entity)
-        let position = getComponent[PositionComponent](my_world, entity)
+        let position = getComponent[RelativePositionComponent](my_world, entity)
 
         if input.inputs[Input.Up]:
             position.y -= 2
