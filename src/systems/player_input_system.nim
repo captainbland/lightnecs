@@ -5,7 +5,6 @@ import sdl2
 
 import ../ecslib/my_system
 import ../ecslib/world
-import ../ecslib/typeutil
 
 import ../components/player_input_component
 import ../components/position_component
@@ -13,7 +12,6 @@ import ../components/position_component
 type
     PlayerInputSystem* = ref object of MySystem
 
-proc type_hash*(c: PlayerInputSystem): Hash = hash($PLAYER_INPUT_SYSTEM)
 
 func toInput(key: Scancode): Input =
   case key

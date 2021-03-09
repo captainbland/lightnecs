@@ -13,5 +13,4 @@ bin           = @["nimgame"]
 requires "nim >= 1.4.0"
 requires "sdl2"
 requires "print"
-requires "chipmunk"
 requires "basic2d"

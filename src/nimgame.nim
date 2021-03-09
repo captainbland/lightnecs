@@ -22,12 +22,6 @@ var space = chipmunk.newSpace()
 var my_world: World = getWorld()
 echo my_world.am_world
 
-
-
-# my_world.setSystemSignature(draw_rect_sys,
-#    newSignature(getComponentType[DrawRectComponent](my_world),
-#                 getComponentType[PositionComponent](my_world)))
-
 let draw_rect_sys = newSystemBuilder(my_world, DrawRectSystem())
     .needsComponent(DrawRectComponent())
     .needsComponent(PositionComponent())
@@ -40,19 +34,21 @@ let input_sys = newSystemBuilder(my_world, PlayerInputSystem())
 
 
 
-var my_entity = newEntityBuilder(my_world)
+discard newEntityBuilder(my_world)
   .withComponent(DrawRectComponent(width:50, height:50))
   .withComponent(PositionComponent(x: 10, y: 10))
   .withComponent(PlayerInputComponent())
   .done()
 
-let my_entity2 = newEntityBuilder(my_world)
+discard newEntityBuilder(my_world)
   .withComponent(DrawRectComponent(width:50, height:50))
   .withComponent(PositionComponent(x: 70, y: 10))
+  .done()
 
-let my_entity3 = newEntityBuilder(my_world)
+discard newEntityBuilder(my_world)
   .withComponent(DrawRectComponent(width:50, height:50))
   .withComponent(PositionComponent(x: 130, y: 10))
+  .done()
 
 window = createWindow("ECSy game", 100, 100, 640,480, SDL_WINDOW_SHOWN)
 render = createRenderer(window, -1, Renderer_Accelerated or Renderer_PresentVsync or Renderer_TargetTexture)

@@ -33,12 +33,8 @@ my_world.addComponent(my_entity, my_appending_component)
 
 
 
-# template my_world(): var World =
-
-
-
 proc mytest() =
-    for x in 0..10000:
+    for x in 0..5:
         my_appending_system.run(my_world)
         my_printing_system.run(my_world)
     

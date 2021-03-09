@@ -21,4 +21,3 @@ method run*(self: AppendingSystem, my_world: World) =
         var appending_component = getComponent[AppendingComponent](my_world, entity)
         #printable_component.my_data &= appending_component.to_append
 
-proc type_hash*(c: AppendingSystem): Hash = hash($APPENDING_SYSTEM)

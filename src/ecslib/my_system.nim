@@ -1,6 +1,5 @@
 import ../ecslib/entity
 import hashes
-import typeutil
 import sets
 
 type
@@ -19,5 +18,3 @@ type
 
 method run*(system: MySystem, entities: seq[Entity]): void = 
      echo "I am not implemented!"
-
-generate_typeinfo(MySystem)

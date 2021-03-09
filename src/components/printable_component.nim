@@ -1,6 +1,3 @@
-import ../ecslib/typeutil
-
-import hashes
 
 type
     PrintableComponent* = ref object of RootObj 
@@ -8,4 +5,3 @@ type
 
 #generate_typeinfo(PrintableComponent)
 
-proc type_hash*(c: PrintableComponent): Hash = hash($PRINTABLE_COMPONENT)

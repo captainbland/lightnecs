@@ -4,6 +4,8 @@ import entity
 import sets
 import tables
 import intsets
+import typetraits
+import hashes
 
 type
     SystemManager* = ref object of RootObj 
@@ -16,12 +18,12 @@ proc newSystemManager*(): SystemManager =
 
 proc registerSystem*[T](self: SystemManager, sys: T): T =
     echo "registering system"
-    let system_hash = type_hash(sys)
+    let system_hash = hash(name(T))
     self.systems[system_hash] = sys
     return sys
 
 proc setSignatureFromManager*[T](self: SystemManager, sys: T, signature: Signature): void =
-    let system_hash = type_hash(sys)
+    let system_hash = hash(name(T))
     self.signatures[system_hash] = signature 
 
 proc entityDestroyed*(self: SystemManager, entity: Entity): void = 
