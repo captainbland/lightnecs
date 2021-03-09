@@ -18,7 +18,7 @@ type
 
 proc getWorld*(): World =
     # 1 world per app that's the rules
-    var world {.global.} = World(
+    var world = World(
         system_manager: newSystemManager(),
         entity_manager: newEntityManager(),
         am_world: "i am a world"
