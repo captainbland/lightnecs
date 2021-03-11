@@ -7,10 +7,12 @@ import intsets
 import typetraits
 import hashes
 
+
 type
     SystemManager* = ref object of RootObj 
         signatures: Table[SystemType, Signature]
         systems: Table[SystemType, MySystem]
+        
 
 proc newSystemManager*(): SystemManager =
     SystemManager(signatures: initTable[SystemType, Signature](),
@@ -42,3 +44,6 @@ proc entitySignatureChanged*(self: SystemManager, entity: Entity, entity_signatu
             system.entities.incl(entity)
         else:
             system.entities.excl(entity)
+
+
+

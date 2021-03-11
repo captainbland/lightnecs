@@ -50,11 +50,22 @@ template createEntity*(the_world: World, components: varargs[untyped]): untyped 
     newEntityWithComponentsImpl(the_world, (components))
 
 
+proc createGetter[SysType, CType](the_world: World, the_system: SysType, comp: CType): (proc (entity: Entity): CType) = 
+    return proc(entity: Entity): CType =
+        getComponent[CType](the_world, entity)
+
 proc newSystemNeedingComponentsImpl[T](the_world: World, the_system: T, components: tuple): T =
     let system_builder = newSystemBuilder(the_world, the_system)
     for x in components.fields:
         discard system_builder.needsComponent(x)
+
+    for x in components.fields:
+        getFastSystemAccessor()[T, S](x).setAccessor(createGetter(the_system, x))
+
     system_builder.done()
+
+
+
 
 
 proc newSystemNeedingComponentsImpl[T, S](the_world: World, the_system: T, component: S): T =
