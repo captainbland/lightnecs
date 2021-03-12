@@ -1,29 +1,31 @@
 import component
 import entity
 import options
+import json
+
 import tables
+export tables.`[]`
+
 import hashes
+import typetraits
+import strutils
+#import json
 
 var component_type_counter: ComponentType = 0
-type 
-    ComponentTypeMap = ref object of RootObj
-        component_types*: Table[Hash, ComponentType]
-
-# proc getComponentTypeMap(): ComponentTypeMap =
-#     #global considered ok because component types are a program-level concept
-#     var type_mape {.global.}: ComponentTypeMap = ComponentTypeMap(component_types: initTable[Hash, ComponentType]())
-
 
 type
     ComponentList*[T] = ref object of RootObj
         entity_index_list: array[MAX_ENTITIES, int]
         component_list: seq[T]
         component_type_id: ComponentType
-    
+        
+const DEFAULT_EMPTY = -1
+const REMOVED = -2
+
 proc newComponentList*[T](): ComponentList[T] =
     component_type_counter += 1
     var list = ComponentList[T](component_list: @[], component_type_id: component_type_counter)
-    for x in list.entity_index_list.mitems(): x = -1
+    for x in list.entity_index_list.mitems(): x = DEFAULT_EMPTY
     return list
 
 proc getComponentTypeFromList*[T](self: ComponentList[T]): ComponentType = 
@@ -47,4 +49,33 @@ proc getComponentFromList*[T](self: ComponentList[T], entity: Entity): T =
 
 proc maybeGetComponentFromList*[T](self: ComponentList[T], entity: Entity): Option[T] =
     let linked_index = self.entity_index_list[entity]
-    return if linked_index > -1: some(self.component_list[linked_index]) else: none(T)
+    return if linked_index > DEFAULT_EMPTY: some(self.component_list[linked_index]) else: none(T)
+
+
+
+proc getComponentRemover*[T](self: ComponentList[T]): proc(entity: Entity) =
+    proc removeComponentFromList(entity: Entity) =
+        let linked_index = self.entity_index_list[entity]
+        
+        self.entity_index_list[entity] = REMOVED
+
+        echo "destroying entity", entity
+    return removeComponentFromList 
+
+
+
+proc getSerialiser*[T](self: ComponentList[T]): proc(): JsonNode =
+    let type_name = name(T)
+    proc serialise(): JsonNode =
+        var my_json_node: JsonNode = %*{}
+        for entity_id in 0..MAX_ENTITIES-1:
+            let linked_index = self.entity_index_list[entity_id]
+
+            if linked_index == DEFAULT_EMPTY: 
+                continue # we're done when we get the first default empty
+            if linked_index > DEFAULT_EMPTY:
+                let component = self.component_list[linked_index]
+                my_json_node[intToStr(entity_id)] = %component
+        return %*{type_name: my_json_node}
+    return serialise # note not having this line results in a sigsev!?
+        

@@ -34,11 +34,19 @@ my_world.addComponent(my_entity, my_appending_component)
 
 
 proc mytest() =
-    for x in 0..5:
+    for x in 0..1000:
         my_appending_system.run(my_world)
         my_printing_system.run(my_world)
     
+proc createComponentsTest() =
+  for x in 0..9000:
+    let my_entity = my_world.createEntity()
+    var my_printable_component = PrintableComponent(my_data: "i am a printable component")
+    var my_appending_component = AppendingComponent(to_append: ": let's append this")
+    my_world.addComponent(my_entity, my_printable_component)
+    my_world.addComponent(my_entity, my_appending_component)
 
+    my_world.destroyEntity(my_entity)
 
 import times, os, strutils
 
@@ -52,6 +60,10 @@ template benchmark(benchmarkName: string, code: untyped) =
 
 
 benchmark("thing", mytest())
+
+benchmark("create components!", createComponentsTest())
+
+echo my_world.serialise()
 
 # # let some_component: Component = PrintableComponent(my_data: "hi")
 # # PrintingSystem().run(some_component)

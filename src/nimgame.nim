@@ -45,11 +45,13 @@ createEntity(my_world,
  PlayerInputComponent(),
  ParentComponent(entity: player_entity_2))
 
-createEntity(my_world,
+let destroyed_entity = createEntity(my_world,
  DrawRectComponent(width:50, height:50), 
  AbsolutePositionComponent(), 
  RelativePositionComponent(x: 50, y: 50),
  ParentComponent(entity: player_entity))
+
+
 
 window = createWindow("ECSy game", 100, 100, 640,480, SDL_WINDOW_SHOWN)
 render = createRenderer(window, -1, Renderer_Accelerated or Renderer_PresentVsync or Renderer_TargetTexture)
@@ -77,4 +79,4 @@ while runGame:
 
 destroy render
 destroy window
-
+echo my_world.serialise()
