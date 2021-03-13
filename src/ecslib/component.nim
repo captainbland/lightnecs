@@ -6,7 +6,7 @@ type
     Component* = object
         component_type*: string
         
-    ComponentType* = int8
+    ComponentType* = int16
 
     Signature* = IntSet
 

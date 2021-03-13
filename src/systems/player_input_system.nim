@@ -3,12 +3,11 @@ import hashes
 import sets
 import sdl2
 
-import ../ecslib/my_system
-import ../ecslib/world
+import ../ecslib/ecs
 
 import ../components/player_input_component
 import ../components/position_component
-
+import glm 
 type
     PlayerInputSystem* = ref object of MySystem
 
@@ -40,10 +39,10 @@ proc on_update*(self: PlayerInputSystem, my_world: World, dt: float) =
         let position = getComponent[RelativePositionComponent](my_world, entity)
 
         if input.inputs[Input.Up]:
-            position.y -= 2
+            position.pos.y -= 2
         if input.inputs[Input.Down]:
-            position.y += 2
+            position.pos.y += 2
         if input.inputs[Input.Right]:
-            position.x += 2 
+            position.pos.x += 2 
         if input.inputs[Input.Left]:
-            position.x -= 2
+            position.pos.x -= 2

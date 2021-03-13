@@ -3,9 +3,9 @@ import hashes
 import sets
 import sdl2
 import options
+import glm
 
-import ../ecslib/my_system
-import ../ecslib/world
+import ../ecslib/ecs
 
 import ../components/player_input_component
 import ../components/position_component
@@ -21,9 +21,8 @@ proc run*(self: RelativePositionSystem, my_world: World, dt: float) =
         let relative_position = getComponent[RelativePositionComponent](my_world, entity)
         let parent = getComponent[ParentComponent](my_world, entity)
 
-        let parent_position = maybeGetComponent[AbsolutePositionComponent](my_world, parent.entity).get(AbsolutePositionComponent(x:0,y:0))
+        let parent_position = maybeGetComponent[AbsolutePositionComponent](my_world, parent.entity).get(AbsolutePositionComponent(pos:vec2i(0,0)))
         var absolute_position = getComponent[AbsolutePositionComponent](my_world, entity)
 
 
-        absolute_position.x = relative_position.x + parent_position.x
-        absolute_position.y = relative_position.y + parent_position.y
+        absolute_position.pos = parent_position.pos + relative_position.pos

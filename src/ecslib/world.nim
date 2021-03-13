@@ -11,6 +11,8 @@ import intsets
 import options
 import json
 import strutils
+import my_system
+import builders 
 
 type
     World* = ref object of RootObj
@@ -20,6 +22,7 @@ type
         am_world*: string
         component_list_destroyers: Table[ComponentType, proc(entity: Entity)]
         component_list_serialisers: Table[ComponentType, proc(): JsonNode]
+        component_lists: Table[ComponentType, AbstractComponentList]
 
 proc getWorld*(): World =
     # 1 world per app that's the rules
@@ -28,7 +31,7 @@ proc getWorld*(): World =
         entity_manager: newEntityManager(),
         am_world: "i am a world",
         component_list_destroyers: initTable[ComponentType, proc(entity: Entity)](),
-        component_list_serialisers: initTable[ComponentType, proc(): JsonNode]()
+        component_list_serialisers: initTable[ComponentType, proc(): JsonNode](),
 
     )
 
@@ -36,6 +39,7 @@ proc getWorld*(): World =
 
 proc createEntity*(self: World): Entity =
     return self.entity_manager.newEntity()
+
 
 proc addComponent*[T](self: World, entity: Entity, component: T): void =
     let my_component_type = getComponentList[T]().getComponentTypeFromList()

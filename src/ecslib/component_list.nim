@@ -14,13 +14,20 @@ import strutils
 var component_type_counter: ComponentType = 0
 
 type
-    ComponentList*[T] = ref object of RootObj
+    AbstractComponentList* = ref object of RootObj
+        component_type_id: ComponentType
+
+    ComponentList*[T] = ref object of AbstractComponentList
         entity_index_list: array[MAX_ENTITIES, int]
         component_list: seq[T]
-        component_type_id: ComponentType
+
+
         
 const DEFAULT_EMPTY = -1
 const REMOVED = -2
+
+proc hash*(self: AbstractComponentList): Hash =
+    self.component_type_id.hash()
 
 proc newComponentList*[T](): ComponentList[T] =
     component_type_counter += 1
@@ -51,8 +58,6 @@ proc maybeGetComponentFromList*[T](self: ComponentList[T], entity: Entity): Opti
     let linked_index = self.entity_index_list[entity]
     return if linked_index > DEFAULT_EMPTY: some(self.component_list[linked_index]) else: none(T)
 
-
-
 proc getComponentRemover*[T](self: ComponentList[T]): proc(entity: Entity) =
     proc removeComponentFromList(entity: Entity) =
         let linked_index = self.entity_index_list[entity]
@@ -61,7 +66,6 @@ proc getComponentRemover*[T](self: ComponentList[T]): proc(entity: Entity) =
 
         echo "destroying entity", entity
     return removeComponentFromList 
-
 
 
 proc getSerialiser*[T](self: ComponentList[T]): proc(): JsonNode =
@@ -73,7 +77,7 @@ proc getSerialiser*[T](self: ComponentList[T]): proc(): JsonNode =
 
             if linked_index == DEFAULT_EMPTY: 
                 continue # we're done when we get the first default empty
-            if linked_index > DEFAULT_EMPTY:
+            if linked_index > DEFAULT_EMPTY and self.component_list.len() > 0:
                 let component = self.component_list[linked_index]
                 my_json_node[intToStr(entity_id)] = %component
         return %*{type_name: my_json_node}

@@ -1,10 +1,10 @@
 import sdl2
 import os
 import chipmunk
-import ecslib/[world, component, builders, entity]
+import ecslib/ecs
 import components/[draw_rect_component, position_component, player_input_component, parent_component]
 import systems/[draw_rect_system, player_input_system, relative_position_system]
-
+import glm
 
 discard sdl2.init(INIT_EVERYTHING)
 
@@ -22,33 +22,33 @@ let input_sys = createSystem(my_world, PlayerInputSystem(), RelativePositionComp
 let relative_position_sys = createSystem(my_world, RelativePositionSystem(), RelativePositionComponent(), AbsolutePositionComponent(), ParentComponent())
 
 #entities
-let root_entity = createEntity(my_world, AbsolutePositionComponent(x: 0, y: 0))
+let root_entity = createEntity(my_world, AbsolutePositionComponent(pos:vec2i(0,0)))
 
 let player_entity = createEntity(my_world,
  DrawRectComponent(width: 50, height: 50),
  AbsolutePositionComponent(), 
- RelativePositionComponent(x:10, y: 10), 
+ RelativePositionComponent(pos:vec2i(10,10)), 
  PlayerInputComponent(),
  ParentComponent(entity:root_entity))
 
 let player_entity_2 = createEntity(my_world,
  DrawRectComponent(width: 50, height: 50),
  AbsolutePositionComponent(), 
- RelativePositionComponent(x:100, y: 10), 
+ RelativePositionComponent(pos:vec2i(100,10)), 
  PlayerInputComponent(),
  ParentComponent(entity:player_entity))
 
 createEntity(my_world,
  DrawRectComponent(width:50, height:50), 
  AbsolutePositionComponent(), 
- RelativePositionComponent(x: 70, y: 10),
+ RelativePositionComponent(pos:vec2i(70,10)),
  PlayerInputComponent(),
  ParentComponent(entity: player_entity_2))
 
 let destroyed_entity = createEntity(my_world,
  DrawRectComponent(width:50, height:50), 
  AbsolutePositionComponent(), 
- RelativePositionComponent(x: 50, y: 50),
+ RelativePositionComponent(pos:vec2i(50,50)),
  ParentComponent(entity: player_entity))
 
 

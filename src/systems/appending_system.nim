@@ -5,10 +5,7 @@ import sets
 import ../components/printable_component
 import ../components/appending_component
 
-import ../ecslib/component
-import ../ecslib/my_system
-import ../ecslib/entity
-import ../ecslib/world
+import ../ecslib/ecs
 
 type
     AppendingSystem* = ref object of MySystem

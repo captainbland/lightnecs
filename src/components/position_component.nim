@@ -1,5 +1,7 @@
+import glm
+
 type AbsolutePositionComponent* = ref object of RootObj
-    x*, y*: int
+    pos*: Vec2i
 
 type RelativePositionComponent* = ref object of RootObj
-    x*, y*: int
+    pos*: Vec2i

@@ -46,7 +46,7 @@ proc createComponentsTest() =
     my_world.addComponent(my_entity, my_printable_component)
     my_world.addComponent(my_entity, my_appending_component)
 
-    my_world.destroyEntity(my_entity)
+    #my_world.destroyEntity(my_entity)
 
 import times, os, strutils
 
