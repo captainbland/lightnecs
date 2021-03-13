@@ -2,6 +2,7 @@ import sdl2
 import sprite_manager
 import os
 import options
+import print
 
 proc test(): void = 
     discard sdl2.init(INIT_EVERYTHING)
@@ -13,9 +14,9 @@ proc test(): void =
     defer: destroy render
 
     var sprite_manager = newSpriteManager("assets/sprites", render)
-
-    let my_sprite = sprite_manager.loadSprite("flaremage-stand-left.png")
-    defer: sprite_manager.releaseSprite("flaremage-stand-left.png")
+    print spriteManager.loadAnimation("flaremage-stand-left")
+    let my_sprite = sprite_manager.loadSprite("flaremage-stand-left")
+    defer: sprite_manager.releaseSprite("flaremage-stand-left")
 
     var
         evt = sdl2.defaultEvent
@@ -31,7 +32,7 @@ proc test(): void =
 
         render.setDrawColor 0,0,0,255
         render.clear
-        render.copy sprite_manager.getSprite("flaremage-stand-left.png").get().texture, nil, nil
+        render.copy sprite_manager.getSprite("flaremage-stand-left").get().texture, nil, nil
 
         render.present
     

@@ -1,34 +1,35 @@
 import system
-import hashes
 import sets
 import sdl2
 import glm
+import sugar
 
 import ../components/draw_rect_component
 import ../components/position_component
 
 import ../ecslib/ecs
+import ../ecslib/optionsutils
 
 type
     DrawRectSystem* = ref object of MySystem
 
 
-proc draw(renderer: RendererPtr, pos: Vec2i, rect: DrawRectComponent) =
-  renderer.setDrawColor 255, 255, 255, 255 # white
-  var r = rect(
-    cint(pos.x), cint(pos.y),
-    cint(rect.width), cint(rect.height)
-  )
-  renderer.fillRect(r)
-
-proc run*(self: DrawRectSystem, my_world: World, window: RendererPtr) =
+proc run*(self: DrawRectSystem, my_world: World, renderer: RendererPtr) =
     #echo "trying to run printing system"
     
-    for entity in self.entities:
-        let rect = getComponent[DrawRectComponent](my_world, entity)
-        let pos = getComponent[AbsolutePositionComponent](my_world, entity).pos
+    proc draw(rect: DrawRectComponent, pos: AbsolutePositionComponent) =
+        renderer.setDrawColor 255, 255, 255, 255 # white
+        var r = rect(
+            cint(pos.pos.x), cint(pos.pos.y),
+            cint(rect.width), cint(rect.height)
+        )
+        renderer.fillRect r
 
-        echo "drawing rect having entity"
-        draw(window, pos, rect)
+    for entity in self.entities:
+        applyWithAll(queryComponent[DrawRectComponent](my_world, entity),
+                     queryComponent[AbsolutePositionComponent](my_world, entity),
+                     draw)
+        .orElse(() => echo "could not draw rect, a component is missing :(")
+
         
             

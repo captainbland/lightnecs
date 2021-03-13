@@ -59,8 +59,8 @@ proc removeComponent*[T](self: World, entity: Entity): void = discard
 proc getComponent*[T](self: World, entity: Entity): T =
     return getComponentList[T]().getComponentFromList(entity)
 
-proc maybeGetComponent*[T](self: World, entity: Entity): Option[T] =
-    return getComponentList[T]().maybeGetComponentFromList(entity)
+proc queryComponent*[T](self: World, entity: Entity): Option[T] =
+    return getComponentList[T]().queryComponentFromList(entity)
 
 
 proc getComponentType*[T](self: World): ComponentType =

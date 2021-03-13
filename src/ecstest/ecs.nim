@@ -63,7 +63,7 @@ benchmark("thing", mytest())
 
 benchmark("create components!", createComponentsTest())
 
-echo my_world.serialise()
+#echo my_world.serialise()
 
 # # let some_component: Component = PrintableComponent(my_data: "hi")
 # # PrintingSystem().run(some_component)

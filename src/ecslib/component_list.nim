@@ -54,7 +54,7 @@ proc getComponentFromList*[T](self: ComponentList[T], entity: Entity): T =
     let linked_index = self.entity_index_list[entity]
     self.component_list[linked_index]
 
-proc maybeGetComponentFromList*[T](self: ComponentList[T], entity: Entity): Option[T] =
+proc queryComponentFromList*[T](self: ComponentList[T], entity: Entity): Option[T] =
     let linked_index = self.entity_index_list[entity]
     return if linked_index > DEFAULT_EMPTY: some(self.component_list[linked_index]) else: none(T)
 

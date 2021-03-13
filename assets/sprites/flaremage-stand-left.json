@@ -1,0 +1,41 @@
+{ "frames": [
+    {
+     "filename": "flaremage-frontside-sprite 0.aseprite",
+     "frame": { "x": 0, "y": 0, "w": 26, "h": 32 },
+     "rotated": false,
+     "trimmed": false,
+     "spriteSourceSize": { "x": 0, "y": 0, "w": 26, "h": 32 },
+     "sourceSize": { "w": 26, "h": 32 },
+     "duration": 200
+    },
+    {
+     "filename": "flaremage-frontside-sprite 1.aseprite",
+     "frame": { "x": 26, "y": 0, "w": 26, "h": 32 },
+     "rotated": false,
+     "trimmed": false,
+     "spriteSourceSize": { "x": 0, "y": 0, "w": 26, "h": 32 },
+     "sourceSize": { "w": 26, "h": 32 },
+     "duration": 200
+    },
+    {
+     "filename": "flaremage-frontside-sprite 2.aseprite",
+     "frame": { "x": 52, "y": 0, "w": 26, "h": 32 },
+     "rotated": false,
+     "trimmed": false,
+     "spriteSourceSize": { "x": 0, "y": 0, "w": 26, "h": 32 },
+     "sourceSize": { "w": 26, "h": 32 },
+     "duration": 200
+    }
+  ],
+  "meta": {
+   "app": "http://www.aseprite.org/",
+   "version": "1.2.25-x64",
+   "image": "flaremage-frontside-sprite.png",
+   "format": "I8",
+   "size": { "w": 78, "h": 32 },
+   "scale": "1",
+   "slices": [
+   ]
+  }
+ }
+ 
