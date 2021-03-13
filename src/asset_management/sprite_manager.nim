@@ -24,12 +24,13 @@ type
     
     AnimationInfo* = ref object of RootObj
         frames*: seq[Frame]
+        last_frame_at*: int
+        current_frame: int
+
 
     Sprite* = ref object of RootObj
         handle*: string
         texture*: sdl.TexturePtr
-
-
 
 proc newSpriteManager*(directory: string, renderer:RendererPtr): SpriteManager =
     SpriteManager(sprites: initTable[string, Sprite](), directory: directory, renderer: renderer)
@@ -53,6 +54,9 @@ proc getSprite*(self: SpriteManager, handle: string): Option[Sprite] =
         some(self.sprites[handle])
     else:
         none(Sprite)
+
+
+
 
 proc releaseSprite*(self: SpriteManager, handle: string): void =
     if self.sprites.hasKey(handle):
@@ -82,3 +86,9 @@ proc loadAsepriteAnimation(filename: string): AnimationInfo =
 proc loadAnimation*(self: SpriteManager, handle: string): AnimationInfo =
     self.animations[handle] = loadAsepriteAnimation(getPath(self.directory, handle) & ANIM_EXT)
     return self.animations[handle]
+
+proc loadSpritesheet*(self: SpriteManager, handle: string): tuple[sprite: Sprite, anim: AnimationInfo] =
+     let sprite = loadSprite(self, handle)
+     let animation = loadAnimation(self, handle)
+
+     return (sprite, animation)

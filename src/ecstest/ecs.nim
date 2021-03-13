@@ -21,32 +21,30 @@ my_world.setSystemSignature(my_printing_system, newSignature(getComponentType[Pr
 
 let my_appending_system = my_world.registerSystem(AppendingSystem())
 my_world.setSystemSignature(my_appending_system, newSignature(getComponentType[AppendingComponent](my_world), getComponentType[PrintableComponent](my_world)))
+for x in 0..1000:
 
-let my_entity = my_world.createEntity()
-
-
-echo "my entity", my_entity
-var my_printable_component = PrintableComponent(my_data: "i am a printable component")
-var my_appending_component = AppendingComponent(to_append: ": let's append this")
-my_world.addComponent(my_entity, my_printable_component)
-my_world.addComponent(my_entity, my_appending_component)
+  let my_entity = my_world.createEntity()
+  var my_printable_component = PrintableComponent(my_data: "i am a printable component")
+  var my_appending_component = AppendingComponent(to_append: ": let's append this")
+  my_world.addComponent(my_entity, my_printable_component)
+  my_world.addComponent(my_entity, my_appending_component)
 
 
-
-proc mytest() =
-    for x in 0..1000:
+proc mytest() = #1000 entiites with two components and 10000 steps should take about 0.75 seconds with markAndPrune
+                # i.e. (2*1000*10000)/0.75 = ~27 million operations per second on a core i5 10400f
+    for x in 0..10000:
         my_appending_system.run(my_world)
         my_printing_system.run(my_world)
     
 proc createComponentsTest() =
-  for x in 0..9000:
+  for x in 0..1000:
     let my_entity = my_world.createEntity()
     var my_printable_component = PrintableComponent(my_data: "i am a printable component")
     var my_appending_component = AppendingComponent(to_append: ": let's append this")
     my_world.addComponent(my_entity, my_printable_component)
     my_world.addComponent(my_entity, my_appending_component)
 
-    #my_world.destroyEntity(my_entity)
+    my_world.destroyEntity(my_entity)
 
 import times, os, strutils
 

@@ -39,7 +39,7 @@ proc getComponentTypeFromList*[T](self: ComponentList[T]): ComponentType =
     self.component_type_id
 
 #singleton each component manager
-proc getComponentList*[T](): ComponentList[T] = 
+proc getComponentList*[T](): ComponentList[T] =  
     # static considered ok here because component types are considered to be program-level objects
     var thisComponentList  {.global.}: ComponentList[T] = newComponentList[T]()
     return thisComponentList
@@ -64,7 +64,7 @@ proc getComponentRemover*[T](self: ComponentList[T]): proc(entity: Entity) =
         
         self.entity_index_list[entity] = REMOVED
 
-        echo "destroying entity", entity
+        #echo "destroying entity", entity
     return removeComponentFromList 
 
 
@@ -79,7 +79,8 @@ proc getSerialiser*[T](self: ComponentList[T]): proc(): JsonNode =
                 continue # we're done when we get the first default empty
             if linked_index > DEFAULT_EMPTY and self.component_list.len() > 0:
                 let component = self.component_list[linked_index]
-                my_json_node[intToStr(entity_id)] = %component
+                when compiles %component:
+                    my_json_node[intToStr(entity_id)] = %component
         return %*{type_name: my_json_node}
     return serialise # note not having this line results in a sigsev!?
         

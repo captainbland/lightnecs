@@ -1,6 +1,93 @@
 total executions of each stack trace:
-Entry: 1/5 Calls: 4/8 = 50.00% [sum: 4; 4/8 = 50.00%]
-  C:\Users\Jaron\.choosenim\toolchains\nim-1.4.2\lib\system\iterators_1.nim: run 5/8 = 62.50%
-  c:\Users\Jaron\Documents\nimgame\src\systems\appending_system.nim: run 5/8 = 62.50%
-  c:\Users\Jaron\Documents\nimgame\src\ecstest\ecs.nim: mytest 5/8 = 62.50%
-  c:\Users\Jaron\Documents\nimgame\src\ecstest\ecs.nim: ecs 7/8 = 87.50%
+Entry: 1/16 Calls: 153/621 = 24.64% [sum: 153; 153/621 = 24.64%]
+  appending_system.nim: run 618/621 = 99.52%
+  appending_system.nim: run 618/621 = 99.52%
+  ecs.nim: mytest 618/621 = 99.52%
+  ecs.nim: ecs 620/621 = 99.84%
+Entry: 2/16 Calls: 119/621 = 19.16% [sum: 272; 272/621 = 43.80%]
+  comparisons.nim: <=% 119/621 = 19.16%
+  gc_common.nim: isOnStack 119/621 = 19.16%
+  gc.nim: unsureAsgnRef 119/621 = 19.16%
+  options.nim: some 151/621 = 24.32%
+  component_list.nim: queryComponentFromList 179/621 = 28.82%
+  world.nim: queryComponent 240/621 = 38.65%
+  appending_system.nim: run 618/621 = 99.52%
+  appending_system.nim: run 618/621 = 99.52%
+  ecs.nim: mytest 618/621 = 99.52%
+  ecs.nim: ecs 620/621 = 99.84%
+Entry: 3/16 Calls: 74/621 = 11.92% [sum: 346; 346/621 = 55.72%]
+  optionsutils.nim: fine 74/621 = 11.92%
+  optionsutils.nim: applyWithAll 208/621 = 33.49%
+  appending_system.nim: run 618/621 = 99.52%
+  appending_system.nim: run 618/621 = 99.52%
+  ecs.nim: mytest 618/621 = 99.52%
+  ecs.nim: ecs 620/621 = 99.84%
+Entry: 4/16 Calls: 46/621 = 7.41% [sum: 392; 392/621 = 63.12%]
+  optionsutils.nim: applyWithAll 208/621 = 33.49%
+  appending_system.nim: run 618/621 = 99.52%
+  appending_system.nim: run 618/621 = 99.52%
+  ecs.nim: mytest 618/621 = 99.52%
+  ecs.nim: ecs 620/621 = 99.84%
+Entry: 5/16 Calls: 37/621 = 5.96% [sum: 429; 429/621 = 69.08%]
+  world.nim: queryComponent 240/621 = 38.65%
+  appending_system.nim: run 618/621 = 99.52%
+  appending_system.nim: run 618/621 = 99.52%
+  ecs.nim: mytest 618/621 = 99.52%
+  ecs.nim: ecs 620/621 = 99.84%
+Entry: 6/16 Calls: 32/621 = 5.15% [sum: 461; 461/621 = 74.24%]
+  options.nim: some 151/621 = 24.32%
+  component_list.nim: queryComponentFromList 179/621 = 28.82%
+  world.nim: queryComponent 240/621 = 38.65%
+  appending_system.nim: run 618/621 = 99.52%
+  appending_system.nim: run 618/621 = 99.52%
+  ecs.nim: mytest 618/621 = 99.52%
+  ecs.nim: ecs 620/621 = 99.84%
+Entry: 7/16 Calls: 31/621 = 4.99% [sum: 492; 492/621 = 79.23%]
+  options.nim: isSome 31/621 = 4.99%
+  optionsutils.nim: applyWithAll 208/621 = 33.49%
+  appending_system.nim: run 618/621 = 99.52%
+  appending_system.nim: run 618/621 = 99.52%
+  ecs.nim: mytest 618/621 = 99.52%
+  ecs.nim: ecs 620/621 = 99.84%
+Entry: 8/16 Calls: 28/621 = 4.51% [sum: 520; 520/621 = 83.74%]
+  component_list.nim: queryComponentFromList 179/621 = 28.82%
+  world.nim: queryComponent 240/621 = 38.65%
+  appending_system.nim: run 618/621 = 99.52%
+  appending_system.nim: run 618/621 = 99.52%
+  ecs.nim: mytest 618/621 = 99.52%
+  ecs.nim: ecs 620/621 = 99.84%
+Entry: 9/16 Calls: 24/621 = 3.86% [sum: 544; 544/621 = 87.60%]
+  component_list.nim: getComponentList 24/621 = 3.86%
+  world.nim: queryComponent 240/621 = 38.65%
+  appending_system.nim: run 618/621 = 99.52%
+  appending_system.nim: run 618/621 = 99.52%
+  ecs.nim: mytest 618/621 = 99.52%
+  ecs.nim: ecs 620/621 = 99.84%
+Entry: 10/16 Calls: 23/621 = 3.70% [sum: 567; 567/621 = 91.30%]
+  options.nim: isNone 23/621 = 3.70%
+  options.nim: get 45/621 = 7.25%
+  optionsutils.nim: applyWithAll 208/621 = 33.49%
+  appending_system.nim: run 618/621 = 99.52%
+  appending_system.nim: run 618/621 = 99.52%
+  ecs.nim: mytest 618/621 = 99.52%
+  ecs.nim: ecs 620/621 = 99.84%
+Entry: 11/16 Calls: 22/621 = 3.54% [sum: 589; 589/621 = 94.85%]
+  options.nim: get 45/621 = 7.25%
+  optionsutils.nim: applyWithAll 208/621 = 33.49%
+  appending_system.nim: run 618/621 = 99.52%
+  appending_system.nim: run 618/621 = 99.52%
+  ecs.nim: mytest 618/621 = 99.52%
+  ecs.nim: ecs 620/621 = 99.84%
+Entry: 12/16 Calls: 17/621 = 2.74% [sum: 606; 606/621 = 97.58%]
+  optionsutils.nim: orElse 17/621 = 2.74%
+  appending_system.nim: run 618/621 = 99.52%
+  appending_system.nim: run 618/621 = 99.52%
+  ecs.nim: mytest 618/621 = 99.52%
+  ecs.nim: ecs 620/621 = 99.84%
+Entry: 13/16 Calls: 12/621 = 1.93% [sum: 618; 618/621 = 99.52%]
+  appending_system.nim: :anonymous 12/621 = 1.93%
+  optionsutils.nim: applyWithAll 208/621 = 33.49%
+  appending_system.nim: run 618/621 = 99.52%
+  appending_system.nim: run 618/621 = 99.52%
+  ecs.nim: mytest 618/621 = 99.52%
+  ecs.nim: ecs 620/621 = 99.84%
