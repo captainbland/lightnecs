@@ -21,7 +21,7 @@ type
         frame_height*: int
         sheet_x*: int
         sheet_y*: int
-        duration*: int
+        duration*: int64
     
     AnimationInfo* = ref object of RootObj
         frames*: seq[Frame]
