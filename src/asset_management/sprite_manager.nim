@@ -4,6 +4,7 @@ import typetraits
 import tables
 import options
 import json
+import times
 
 const SPRITESHEET_EXT = ".png"
 const ANIM_EXT = ".json"
@@ -24,8 +25,8 @@ type
     
     AnimationInfo* = ref object of RootObj
         frames*: seq[Frame]
-        last_frame_at*: int
-        current_frame: int
+        last_frame_at*: Time
+        current_frame*: int
 
 
     Sprite* = ref object of RootObj
