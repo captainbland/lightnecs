@@ -47,6 +47,21 @@ let player_entity = createEntity(my_world,
  PlayerInputComponent(),
  ParentComponent(entity:root_entity))
 
+# # uncomment for entity spam fun
+# for x in 0..100:
+#     for y in 0..91: 
+#         var to_add = 20 + x*4
+#         var y = 20 + y * 4
+#         var pos = vec2i(vec2(to_add, y))
+
+#         createEntity(my_world,
+#             flaremage_sprite,
+#             flaremage_anim,
+#             AbsolutePositionComponent(), 
+#             RelativePositionComponent(pos:pos), 
+#             PlayerInputComponent(),
+#             ParentComponent(entity:root_entity))
+
 let player_entity_2 = createEntity(my_world,
  DrawRectComponent(width: 50, height: 50),
  AbsolutePositionComponent(), 
@@ -96,7 +111,7 @@ while runGame:
         else:
             input_sys.on_poll(my_world, addr evt)
     
-    sleep(33)
+    #sleep(33)
     input_sys.on_update(my_world, 1.0)
     relative_position_sys.run(my_world, 1.0)
     render.setDrawColor 0,0,0,255

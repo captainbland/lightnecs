@@ -1,0 +1,23 @@
+CC: stdlib_system.nim
+CC: ecslib/component.nim
+CC: ecslib/entity.nim
+CC: stdlib_tables.nim
+CC: stdlib_json.nim
+CC: ecslib/component_list.nim
+CC: stdlib_sets.nim
+CC: ecslib/my_system.nim
+CC: ecslib/system_manager.nim
+CC: stdlib_deques.nim
+CC: ecslib/entity_manager.nim
+CC: ecslib/world.nim
+CC: ecslib/builders.nim
+CC: components/parent_component.nim
+CC: ecslib/optionsutils.nim
+CC: systems/draw_rect_system.nim
+CC: systems/player_input_system.nim
+CC: systems/relative_position_system.nim
+CC: systems/animation_system.nim
+CC: nimgame.nim
+using fixed chipmunk bindings
+Initializing cpSpace - Chipmunk v6.1.4 (Debug Enabled)
+Compile with -DNDEBUG defined to disable debug mode and runtime assertion checks

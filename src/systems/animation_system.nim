@@ -43,13 +43,9 @@ proc run*(self: AnimationSystem, my_world: World, renderer: RendererPtr) =
             anim.current_frame = (anim.current_frame + 1) mod anim.frames.len
             anim.last_frame_at = getTime()
 
-        print anim
-        print.print sprite.texture
         var src_rect = calcSourceRect(anim.frames[anim.current_frame])
         var dest_rect = calcDestRect(pos, anim.frames[anim.current_frame])
 
-        print src_rect
-        print dest_rect
 
         renderer.copy sprite.texture, addr src_rect, addr dest_rect
 
