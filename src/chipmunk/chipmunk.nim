@@ -42,13 +42,13 @@ const
   CP_MAX_CONTACTS_PER_ARBITER* = 4
   CpInfinity*: CpFloat = 1.0/0
 
-import basic2d
+import glm
 when CpFloat is float:
-  type Vector* = Vector2d
+  type Vector* = Vec2d
 else:
   type Vector* = object
-    x*,y*: cpFloat
-const VectorIsVector2d* = Vector is Vector2d
+    x*,y*: CpFloat
+const VectorIsVector2d* = Vector is Vec2f
 
 {.pragma: pf, pure, final.}
 type 
@@ -641,7 +641,7 @@ when not VectorIsVector2d:
   proc `*=`*(v: var Vector; s: CpFloat) =
     v.x = v.x * s
     v.y = v.y * s
-  proc normalize*(v: var Vector) {.inline.} = 
+  proc normalize*(v: var Vector): Vector {.inline.} = 
     #/ Normalizes vector v
     result *= (1.0 / result.len).CPfloat
 
@@ -683,7 +683,7 @@ proc normalizeSafe*(v: Vector): Vector {.inline.} =
     result = VectorZero 
   else:
     result = v
-    result.normalize
+    return result.normalize
 #/ Clamp v to length len.
 proc clamp*(v: Vector; len: CpFloat): Vector {.inline.} = 
   result = if v.dot(v) > len * len: v.normalizeSafe * len else: v

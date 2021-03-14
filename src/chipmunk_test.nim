@@ -1,10 +1,10 @@
 import strutils
-import chipmunk
-import basic2d
+import chipmunk/chipmunk
+import glm
 
 
 
-proc v(x,y:float): Vector2d = vector2d(x,y)
+proc v(x,y:float): Vec2d = vec2d(x,y)
 
 var gravity = v(0, -100)
 var vzero = v(0,0)
