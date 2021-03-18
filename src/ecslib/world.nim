@@ -53,7 +53,17 @@ proc addComponent*[T](self: World, entity: Entity, component: T): void =
     self.component_list_destroyers[my_component_type] = my_component_list.getComponentRemover()
     self.component_list_serialisers[my_component_type] = my_component_list.getSerialiser()
 
-proc removeComponent*[T](self: World, entity: Entity): void = discard
+
+proc removeComponent*[T](self: World, entity: Entity): void = 
+    getComponentList[T]().removeComponentFromList(entity)
+
+
+proc setComponent*[T](self: World, entity: Entity, component: T): void = 
+    let my_component_type = getComponentList[T]().getComponentTypeFromList()
+    let my_component_list = getComponentList[T]()
+    replaceComponentInList[T](my_component_list, entity, component)
+
+   
 
 proc getComponent*[T](self: World, entity: Entity): T =
     return getComponentList[T]().getComponentFromList(entity)

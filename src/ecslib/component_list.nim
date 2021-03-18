@@ -20,6 +20,7 @@ type
     ComponentList*[T] = ref object of AbstractComponentList
         entity_index_list: array[MAX_ENTITIES, int]
         component_list: seq[T]
+        next_index_to_use: seq[int]
 
 
         
@@ -31,8 +32,11 @@ proc hash*(self: AbstractComponentList): Hash =
 
 proc newComponentList*[T](): ComponentList[T] =
     component_type_counter += 1
-    var list = ComponentList[T](component_list: @[], component_type_id: component_type_counter)
+    var list = ComponentList[T](component_list: @[],
+     component_type_id: component_type_counter,
+     next_index_to_use: @[])
     for x in list.entity_index_list.mitems(): x = DEFAULT_EMPTY
+
     return list
 
 proc getComponentTypeFromList*[T](self: ComponentList[T]): ComponentType = 
@@ -46,9 +50,13 @@ proc getComponentList*[T](): ComponentList[T] =
 
 proc addEntityComponent*[T](self: ComponentList[T], entity: Entity, component: T): void = 
     #probably very not thread safe
+
     let linked_index = self.component_list.len()
     self.entity_index_list[entity] = linked_index
-    self.component_list.add(component)
+    if self.next_index_to_use.len() == 0:
+        self.component_list.add(component)
+    else: 
+        self.component_list[self.next_index_to_use.pop()] = component
 
 proc getComponentFromList*[T](self: ComponentList[T], entity: Entity): T =
     let linked_index = self.entity_index_list[entity]
@@ -56,16 +64,30 @@ proc getComponentFromList*[T](self: ComponentList[T], entity: Entity): T =
 
 proc queryComponentFromList*[T](self: ComponentList[T], entity: Entity): Option[T] =
     let linked_index = self.entity_index_list[entity]
-    return if linked_index > DEFAULT_EMPTY: some(self.component_list[linked_index]) else: none(T)
+    return if linked_index > DEFAULT_EMPTY:
+         some(self.component_list[linked_index])
+    else: none(T)
+
+
+proc replaceComponentInList*[T](self: ComponentList[T], entity: Entity, component: T) =
+    let linked_index = self.entity_index_list[entity]
+    self.component_list[linked_index] = component
+
+proc removeComponentFromList*[T](self: ComponentList[T], entity: Entity) =
+    let linked_index = self.entity_index_list[entity]
+    self.entity_index_list[entity] = REMOVED
+    self.next_index_to_use.add(linked_index)
+
 
 proc getComponentRemover*[T](self: ComponentList[T]): proc(entity: Entity) =
-    proc removeComponentFromList(entity: Entity) =
-        let linked_index = self.entity_index_list[entity]
-        
-        self.entity_index_list[entity] = REMOVED
+    proc componentRemover(entity: Entity) =
+        removeComponentFromList(self, entity)
 
         #echo "destroying entity", entity
-    return removeComponentFromList 
+    return componentRemover 
+
+
+
 
 
 proc getSerialiser*[T](self: ComponentList[T]): proc(): JsonNode =

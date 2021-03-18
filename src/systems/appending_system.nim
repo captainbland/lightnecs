@@ -21,6 +21,7 @@ method run*(self: AppendingSystem, my_world: World) =
 
         applyWithAll(queryComponent[PrintableComponent](my_world, entity),
                      queryComponent[AppendingComponent](my_world, entity),
-            proc(printable: PrintableComponent, appending: AppendingComponent) = printable.my_data &= appending.to_append)
+            proc(printable: PrintableComponent, appending: AppendingComponent) = 
+                setComponent[PrintableComponent](my_world, entity, PrintableComponent(my_data: printable.my_data & appending.to_append)))
             .orElse(() => echo "could not get all components in printing system")
 
