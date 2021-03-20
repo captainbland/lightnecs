@@ -65,11 +65,11 @@ proc setComponent*[T](self: World, entity: Entity, component: T): void =
 
    
 
-proc getComponent*[T](self: World, entity: Entity): T =
+proc getComponent*[T](self: World, entity: Entity): T {.inline.} =
     return getComponentList[T]().getComponentFromList(entity)
 
 #note: using queryComponent is about half as fast as getComponent, but is safer
-proc queryComponent*[T](self: World, entity: Entity): Option[T] =
+proc queryComponent*[T](self: World, entity: Entity): Option[T] {.inline.} =
     return getComponentList[T]().queryComponentFromList(entity)
 
 
