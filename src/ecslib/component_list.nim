@@ -51,12 +51,15 @@ proc getComponentList*[T](): ComponentList[T] =
 proc addEntityComponent*[T](self: ComponentList[T], entity: Entity, component: T): void = 
     #probably very not thread safe
 
-    let linked_index = self.component_list.len()
-    self.entity_index_list[entity] = linked_index
-    if self.next_index_to_use.len() == 0:
+
+    if self.next_index_to_use.len() == 0 or self.next_index_to_use[self.next_index_to_use.len()-1] > 0:
+        let linked_index = self.component_list.len()
+        self.entity_index_list[entity] = linked_index
         self.component_list.add(component)
     else: 
-        self.component_list[self.next_index_to_use.pop()] = component
+        let linked_index = self.next_index_to_use.pop()
+        self.component_list[linked_index] = component
+        self.entity_index_list[entity] = linked_index
 
 proc getComponentFromList*[T](self: ComponentList[T], entity: Entity): T =
     let linked_index = self.entity_index_list[entity]

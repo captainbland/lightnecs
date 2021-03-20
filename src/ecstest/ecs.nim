@@ -21,7 +21,7 @@ my_world.setSystemSignature(my_printing_system, newSignature(getComponentType[Pr
 
 let my_appending_system = my_world.registerSystem(AppendingSystem())
 my_world.setSystemSignature(my_appending_system, newSignature(getComponentType[AppendingComponent](my_world), getComponentType[PrintableComponent](my_world)))
-for x in 0..2:
+for x in 0..1000:
 
   let my_entity = my_world.createEntity()
   var my_printable_component = PrintableComponent(my_data: "i am a printable component")
