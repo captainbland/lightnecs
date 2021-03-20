@@ -28,6 +28,7 @@ for x in 0..1000:
   var my_appending_component = AppendingComponent(to_append: ": let's append this")
   my_world.addComponent(my_entity, my_printable_component)
   my_world.addComponent(my_entity, my_appending_component)
+echo "components created"
 
 
 proc mytest() = #1000 entiites with two components and 10000 steps should take about 0.75 seconds with markAndPrune

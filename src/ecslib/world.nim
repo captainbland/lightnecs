@@ -59,7 +59,6 @@ proc removeComponent*[T](self: World, entity: Entity): void =
 
 
 proc setComponent*[T](self: World, entity: Entity, component: T): void = 
-    let my_component_type = getComponentList[T]().getComponentTypeFromList()
     let my_component_list = getComponentList[T]()
     replaceComponentInList[T](my_component_list, entity, component)
 

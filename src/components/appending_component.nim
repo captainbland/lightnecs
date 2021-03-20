@@ -1,4 +1,4 @@
 type
-    AppendingComponent* = ref object of RootObj 
+    AppendingComponent* = ref object of RootObj
         to_append*: string
 

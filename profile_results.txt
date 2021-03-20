@@ -1,93 +1,570 @@
 total executions of each stack trace:
-Entry: 1/16 Calls: 153/621 = 24.64% [sum: 153; 153/621 = 24.64%]
-  appending_system.nim: run 618/621 = 99.52%
-  appending_system.nim: run 618/621 = 99.52%
-  ecs.nim: mytest 618/621 = 99.52%
-  ecs.nim: ecs 620/621 = 99.84%
-Entry: 2/16 Calls: 119/621 = 19.16% [sum: 272; 272/621 = 43.80%]
-  comparisons.nim: <=% 119/621 = 19.16%
-  gc_common.nim: isOnStack 119/621 = 19.16%
-  gc.nim: unsureAsgnRef 119/621 = 19.16%
-  options.nim: some 151/621 = 24.32%
-  component_list.nim: queryComponentFromList 179/621 = 28.82%
-  world.nim: queryComponent 240/621 = 38.65%
-  appending_system.nim: run 618/621 = 99.52%
-  appending_system.nim: run 618/621 = 99.52%
-  ecs.nim: mytest 618/621 = 99.52%
-  ecs.nim: ecs 620/621 = 99.84%
-Entry: 3/16 Calls: 74/621 = 11.92% [sum: 346; 346/621 = 55.72%]
-  optionsutils.nim: fine 74/621 = 11.92%
-  optionsutils.nim: applyWithAll 208/621 = 33.49%
-  appending_system.nim: run 618/621 = 99.52%
-  appending_system.nim: run 618/621 = 99.52%
-  ecs.nim: mytest 618/621 = 99.52%
-  ecs.nim: ecs 620/621 = 99.84%
-Entry: 4/16 Calls: 46/621 = 7.41% [sum: 392; 392/621 = 63.12%]
-  optionsutils.nim: applyWithAll 208/621 = 33.49%
-  appending_system.nim: run 618/621 = 99.52%
-  appending_system.nim: run 618/621 = 99.52%
-  ecs.nim: mytest 618/621 = 99.52%
-  ecs.nim: ecs 620/621 = 99.84%
-Entry: 5/16 Calls: 37/621 = 5.96% [sum: 429; 429/621 = 69.08%]
-  world.nim: queryComponent 240/621 = 38.65%
-  appending_system.nim: run 618/621 = 99.52%
-  appending_system.nim: run 618/621 = 99.52%
-  ecs.nim: mytest 618/621 = 99.52%
-  ecs.nim: ecs 620/621 = 99.84%
-Entry: 6/16 Calls: 32/621 = 5.15% [sum: 461; 461/621 = 74.24%]
-  options.nim: some 151/621 = 24.32%
-  component_list.nim: queryComponentFromList 179/621 = 28.82%
-  world.nim: queryComponent 240/621 = 38.65%
-  appending_system.nim: run 618/621 = 99.52%
-  appending_system.nim: run 618/621 = 99.52%
-  ecs.nim: mytest 618/621 = 99.52%
-  ecs.nim: ecs 620/621 = 99.84%
-Entry: 7/16 Calls: 31/621 = 4.99% [sum: 492; 492/621 = 79.23%]
-  options.nim: isSome 31/621 = 4.99%
-  optionsutils.nim: applyWithAll 208/621 = 33.49%
-  appending_system.nim: run 618/621 = 99.52%
-  appending_system.nim: run 618/621 = 99.52%
-  ecs.nim: mytest 618/621 = 99.52%
-  ecs.nim: ecs 620/621 = 99.84%
-Entry: 8/16 Calls: 28/621 = 4.51% [sum: 520; 520/621 = 83.74%]
-  component_list.nim: queryComponentFromList 179/621 = 28.82%
-  world.nim: queryComponent 240/621 = 38.65%
-  appending_system.nim: run 618/621 = 99.52%
-  appending_system.nim: run 618/621 = 99.52%
-  ecs.nim: mytest 618/621 = 99.52%
-  ecs.nim: ecs 620/621 = 99.84%
-Entry: 9/16 Calls: 24/621 = 3.86% [sum: 544; 544/621 = 87.60%]
-  component_list.nim: getComponentList 24/621 = 3.86%
-  world.nim: queryComponent 240/621 = 38.65%
-  appending_system.nim: run 618/621 = 99.52%
-  appending_system.nim: run 618/621 = 99.52%
-  ecs.nim: mytest 618/621 = 99.52%
-  ecs.nim: ecs 620/621 = 99.84%
-Entry: 10/16 Calls: 23/621 = 3.70% [sum: 567; 567/621 = 91.30%]
-  options.nim: isNone 23/621 = 3.70%
-  options.nim: get 45/621 = 7.25%
-  optionsutils.nim: applyWithAll 208/621 = 33.49%
-  appending_system.nim: run 618/621 = 99.52%
-  appending_system.nim: run 618/621 = 99.52%
-  ecs.nim: mytest 618/621 = 99.52%
-  ecs.nim: ecs 620/621 = 99.84%
-Entry: 11/16 Calls: 22/621 = 3.54% [sum: 589; 589/621 = 94.85%]
-  options.nim: get 45/621 = 7.25%
-  optionsutils.nim: applyWithAll 208/621 = 33.49%
-  appending_system.nim: run 618/621 = 99.52%
-  appending_system.nim: run 618/621 = 99.52%
-  ecs.nim: mytest 618/621 = 99.52%
-  ecs.nim: ecs 620/621 = 99.84%
-Entry: 12/16 Calls: 17/621 = 2.74% [sum: 606; 606/621 = 97.58%]
-  optionsutils.nim: orElse 17/621 = 2.74%
-  appending_system.nim: run 618/621 = 99.52%
-  appending_system.nim: run 618/621 = 99.52%
-  ecs.nim: mytest 618/621 = 99.52%
-  ecs.nim: ecs 620/621 = 99.84%
-Entry: 13/16 Calls: 12/621 = 1.93% [sum: 618; 618/621 = 99.52%]
-  appending_system.nim: :anonymous 12/621 = 1.93%
-  optionsutils.nim: applyWithAll 208/621 = 33.49%
-  appending_system.nim: run 618/621 = 99.52%
-  appending_system.nim: run 618/621 = 99.52%
-  ecs.nim: mytest 618/621 = 99.52%
-  ecs.nim: ecs 620/621 = 99.84%
+Entry: 1/78 Calls: 60/559 = 10.73% [sum: 60; 60/559 = 10.73%]
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: mytest 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
+Entry: 2/78 Calls: 43/559 = 7.69% [sum: 103; 103/559 = 18.43%]
+  /home/jaron/lightnecs/src/systems/appending_system.nim: :anonymous 165/559 = 29.52%
+  /home/jaron/lightnecs/src/ecslib/optionsutils.nim: applyWithAll 235/559 = 42.04%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: mytest 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
+Entry: 3/78 Calls: 35/559 = 6.26% [sum: 138; 138/559 = 24.69%]
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/iterators_1.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: mytest 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
+Entry: 4/78 Calls: 20/559 = 3.58% [sum: 158; 158/559 = 28.26%]
+  /home/jaron/lightnecs/src/ecslib/optionsutils.nim: fine 20/559 = 3.58%
+  /home/jaron/lightnecs/src/ecslib/optionsutils.nim: applyWithAll 235/559 = 42.04%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: mytest 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
+Entry: 5/78 Calls: 19/559 = 3.40% [sum: 177; 177/559 = 31.66%]
+  /home/jaron/lightnecs/src/ecslib/component_list.nim: getComponentFromList 72/559 = 12.88%
+  /home/jaron/lightnecs/src/ecslib/world.nim: getComponent 91/559 = 16.28%
+  /home/jaron/lightnecs/src/systems/printing_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: mytest 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
+Entry: 6/78 Calls: 18/559 = 3.22% [sum: 195; 195/559 = 34.88%]
+  /home/jaron/lightnecs/src/ecslib/optionsutils.nim: applyWithAll 235/559 = 42.04%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: mytest 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
+Entry: 7/78 Calls: 15/559 = 2.68% [sum: 210; 210/559 = 37.57%]
+  /home/jaron/lightnecs/src/ecslib/component_list.nim: replaceComponentInList 53/559 = 9.48%
+  /home/jaron/lightnecs/src/ecslib/world.nim: setComponent 68/559 = 12.16%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: :anonymous 165/559 = 29.52%
+  /home/jaron/lightnecs/src/ecslib/optionsutils.nim: applyWithAll 235/559 = 42.04%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: mytest 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
+Entry: 8/78 Calls: 15/559 = 2.68% [sum: 225; 225/559 = 40.25%]
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/arithmetics.nim: +% 110/559 = 19.68%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/alloc.nim: sweep 125/559 = 22.36%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: collectCTBody 146/559 = 26.12%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: collectCT 146/559 = 26.12%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: rawNewObj 198/559 = 35.42%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: newObjNoInit 198/559 = 35.42%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: :anonymous 165/559 = 29.52%
+  /home/jaron/lightnecs/src/ecslib/optionsutils.nim: applyWithAll 235/559 = 42.04%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: mytest 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
+Entry: 9/78 Calls: 14/559 = 2.50% [sum: 239; 239/559 = 42.75%]
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/pure/options.nim: isSome 14/559 = 2.50%
+  /home/jaron/lightnecs/src/ecslib/optionsutils.nim: applyWithAll 235/559 = 42.04%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: mytest 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
+Entry: 10/78 Calls: 14/559 = 2.50% [sum: 253; 253/559 = 45.26%]
+  /home/jaron/lightnecs/src/ecslib/component_list.nim: queryComponentFromList 76/559 = 13.60%
+  /home/jaron/lightnecs/src/ecslib/world.nim: queryComponent 97/559 = 17.35%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: mytest 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
+Entry: 11/78 Calls: 13/559 = 2.33% [sum: 266; 266/559 = 47.58%]
+  /home/jaron/lightnecs/src/ecslib/world.nim: queryComponent 97/559 = 17.35%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: mytest 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
+Entry: 12/78 Calls: 13/559 = 2.33% [sum: 279; 279/559 = 49.91%]
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/arithmetics.nim: +% 110/559 = 19.68%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/alloc.nim: sweep 125/559 = 22.36%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: collectCTBody 146/559 = 26.12%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: collectCT 146/559 = 26.12%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: rawNewObj 198/559 = 35.42%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: newObjNoInit 198/559 = 35.42%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/pure/options.nim: some 62/559 = 11.09%
+  /home/jaron/lightnecs/src/ecslib/component_list.nim: queryComponentFromList 76/559 = 13.60%
+  /home/jaron/lightnecs/src/ecslib/world.nim: queryComponent 97/559 = 17.35%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: mytest 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
+Entry: 13/78 Calls: 12/559 = 2.15% [sum: 291; 291/559 = 52.06%]
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/pure/options.nim: some 62/559 = 11.09%
+  /home/jaron/lightnecs/src/ecslib/component_list.nim: queryComponentFromList 76/559 = 13.60%
+  /home/jaron/lightnecs/src/ecslib/world.nim: queryComponent 97/559 = 17.35%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: mytest 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
+Entry: 14/78 Calls: 11/559 = 1.97% [sum: 302; 302/559 = 54.03%]
+  /home/jaron/lightnecs/src/ecslib/world.nim: getComponent 91/559 = 16.28%
+  /home/jaron/lightnecs/src/systems/printing_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: mytest 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
+Entry: 15/78 Calls: 11/559 = 1.97% [sum: 313; 313/559 = 55.99%]
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/comparisons.nim: <% 77/559 = 13.77%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/alloc.nim: isCell 40/559 = 7.16%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: sweep 125/559 = 22.36%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: collectCTBody 146/559 = 26.12%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: collectCT 146/559 = 26.12%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: rawNewObj 198/559 = 35.42%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: newObjNoInit 198/559 = 35.42%
+  /home/jaron/lightnecs/src/ecslib/component_list.nim: getComponentFromList 72/559 = 12.88%
+  /home/jaron/lightnecs/src/ecslib/world.nim: getComponent 91/559 = 16.28%
+  /home/jaron/lightnecs/src/systems/printing_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: mytest 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
+Entry: 16/78 Calls: 11/559 = 1.97% [sum: 324; 324/559 = 57.96%]
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/arithmetics.nim: +% 110/559 = 19.68%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/alloc.nim: rawAlloc 27/559 = 4.83%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: rawNewObj 198/559 = 35.42%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: newObjNoInit 198/559 = 35.42%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/pure/options.nim: some 62/559 = 11.09%
+  /home/jaron/lightnecs/src/ecslib/component_list.nim: queryComponentFromList 76/559 = 13.60%
+  /home/jaron/lightnecs/src/ecslib/world.nim: queryComponent 97/559 = 17.35%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: mytest 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
+Entry: 17/78 Calls: 11/559 = 1.97% [sum: 335; 335/559 = 59.93%]
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/arithmetics.nim: +% 110/559 = 19.68%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/alloc.nim: sweep 125/559 = 22.36%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: collectCTBody 146/559 = 26.12%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: collectCT 146/559 = 26.12%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: rawNewObj 198/559 = 35.42%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: newObjNoInit 198/559 = 35.42%
+  /home/jaron/lightnecs/src/ecslib/component_list.nim: getComponentFromList 72/559 = 12.88%
+  /home/jaron/lightnecs/src/ecslib/world.nim: getComponent 91/559 = 16.28%
+  /home/jaron/lightnecs/src/systems/printing_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: mytest 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
+Entry: 18/78 Calls: 10/559 = 1.79% [sum: 345; 345/559 = 61.72%]
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/arithmetics.nim: +% 110/559 = 19.68%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: cellToUsr 29/559 = 5.19%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: rawNewObj 198/559 = 35.42%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: newObjNoInit 198/559 = 35.42%
+  /home/jaron/lightnecs/src/ecslib/component_list.nim: getComponentFromList 72/559 = 12.88%
+  /home/jaron/lightnecs/src/ecslib/world.nim: getComponent 91/559 = 16.28%
+  /home/jaron/lightnecs/src/systems/printing_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: mytest 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
+Entry: 19/78 Calls: 10/559 = 1.79% [sum: 355; 355/559 = 63.51%]
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/arithmetics.nim: +% 110/559 = 19.68%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: cellToUsr 29/559 = 5.19%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: rawNewObj 198/559 = 35.42%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: newObjNoInit 198/559 = 35.42%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: :anonymous 165/559 = 29.52%
+  /home/jaron/lightnecs/src/ecslib/optionsutils.nim: applyWithAll 235/559 = 42.04%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: mytest 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
+Entry: 20/78 Calls: 10/559 = 1.79% [sum: 365; 365/559 = 65.30%]
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/comparisons.nim: <% 77/559 = 13.77%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/alloc.nim: isCell 40/559 = 7.16%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: sweep 125/559 = 22.36%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: collectCTBody 146/559 = 26.12%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: collectCT 146/559 = 26.12%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: rawNewObj 198/559 = 35.42%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: newObjNoInit 198/559 = 35.42%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/pure/options.nim: some 62/559 = 11.09%
+  /home/jaron/lightnecs/src/ecslib/component_list.nim: queryComponentFromList 76/559 = 13.60%
+  /home/jaron/lightnecs/src/ecslib/world.nim: queryComponent 97/559 = 17.35%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: mytest 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
+Entry: 21/78 Calls: 10/559 = 1.79% [sum: 375; 375/559 = 67.08%]
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/comparisons.nim: <% 77/559 = 13.77%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/alloc.nim: sweep 125/559 = 22.36%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: collectCTBody 146/559 = 26.12%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: collectCT 146/559 = 26.12%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: rawNewObj 198/559 = 35.42%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: newObjNoInit 198/559 = 35.42%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/pure/options.nim: some 62/559 = 11.09%
+  /home/jaron/lightnecs/src/ecslib/component_list.nim: queryComponentFromList 76/559 = 13.60%
+  /home/jaron/lightnecs/src/ecslib/world.nim: queryComponent 97/559 = 17.35%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: mytest 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
+Entry: 22/78 Calls: 9/559 = 1.61% [sum: 384; 384/559 = 68.69%]
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/comparisons.nim: <% 77/559 = 13.77%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/alloc.nim: sweep 125/559 = 22.36%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: collectCTBody 146/559 = 26.12%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: collectCT 146/559 = 26.12%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: rawNewObj 198/559 = 35.42%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: newObjNoInit 198/559 = 35.42%
+  /home/jaron/lightnecs/src/ecslib/component_list.nim: getComponentFromList 72/559 = 12.88%
+  /home/jaron/lightnecs/src/ecslib/world.nim: getComponent 91/559 = 16.28%
+  /home/jaron/lightnecs/src/systems/printing_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: mytest 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
+Entry: 23/78 Calls: 9/559 = 1.61% [sum: 393; 393/559 = 70.30%]
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/arithmetics.nim: +% 110/559 = 19.68%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/alloc.nim: sweep 125/559 = 22.36%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: collectCTBody 146/559 = 26.12%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: collectCT 146/559 = 26.12%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: rawNewObj 198/559 = 35.42%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: newObjNoInit 198/559 = 35.42%
+  /home/jaron/lightnecs/src/ecslib/component_list.nim: replaceComponentInList 53/559 = 9.48%
+  /home/jaron/lightnecs/src/ecslib/world.nim: setComponent 68/559 = 12.16%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: :anonymous 165/559 = 29.52%
+  /home/jaron/lightnecs/src/ecslib/optionsutils.nim: applyWithAll 235/559 = 42.04%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: mytest 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
+Entry: 24/78 Calls: 9/559 = 1.61% [sum: 402; 402/559 = 71.91%]
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/comparisons.nim: <% 77/559 = 13.77%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/alloc.nim: isCell 40/559 = 7.16%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: sweep 125/559 = 22.36%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: collectCTBody 146/559 = 26.12%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: collectCT 146/559 = 26.12%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: rawNewObj 198/559 = 35.42%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: newObjNoInit 198/559 = 35.42%
+  /home/jaron/lightnecs/src/ecslib/component_list.nim: replaceComponentInList 53/559 = 9.48%
+  /home/jaron/lightnecs/src/ecslib/world.nim: setComponent 68/559 = 12.16%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: :anonymous 165/559 = 29.52%
+  /home/jaron/lightnecs/src/ecslib/optionsutils.nim: applyWithAll 235/559 = 42.04%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: mytest 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
+Entry: 25/78 Calls: 9/559 = 1.61% [sum: 411; 411/559 = 73.52%]
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/comparisons.nim: <% 77/559 = 13.77%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/alloc.nim: isCell 40/559 = 7.16%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: sweep 125/559 = 22.36%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: collectCTBody 146/559 = 26.12%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: collectCT 146/559 = 26.12%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: rawNewObj 198/559 = 35.42%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: newObjNoInit 198/559 = 35.42%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: :anonymous 165/559 = 29.52%
+  /home/jaron/lightnecs/src/ecslib/optionsutils.nim: applyWithAll 235/559 = 42.04%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: mytest 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
+Entry: 26/78 Calls: 9/559 = 1.61% [sum: 420; 420/559 = 75.13%]
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/pure/options.nim: get 18/559 = 3.22%
+  /home/jaron/lightnecs/src/ecslib/optionsutils.nim: applyWithAll 235/559 = 42.04%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: mytest 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
+Entry: 27/78 Calls: 9/559 = 1.61% [sum: 429; 429/559 = 76.74%]
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/pure/options.nim: isNone 9/559 = 1.61%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/pure/options.nim: get 18/559 = 3.22%
+  /home/jaron/lightnecs/src/ecslib/optionsutils.nim: applyWithAll 235/559 = 42.04%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: mytest 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
+Entry: 28/78 Calls: 8/559 = 1.43% [sum: 437; 437/559 = 78.18%]
+  /home/jaron/lightnecs/src/ecslib/component_list.nim: getComponentList 24/559 = 4.29%
+  /home/jaron/lightnecs/src/ecslib/world.nim: getComponent 91/559 = 16.28%
+  /home/jaron/lightnecs/src/systems/printing_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: mytest 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
+Entry: 29/78 Calls: 8/559 = 1.43% [sum: 445; 445/559 = 79.61%]
+  /home/jaron/lightnecs/src/ecslib/component_list.nim: getComponentList 24/559 = 4.29%
+  /home/jaron/lightnecs/src/ecslib/world.nim: queryComponent 97/559 = 17.35%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: mytest 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
+Entry: 30/78 Calls: 8/559 = 1.43% [sum: 453; 453/559 = 81.04%]
+  /home/jaron/lightnecs/src/ecslib/component_list.nim: getComponentList 24/559 = 4.29%
+  /home/jaron/lightnecs/src/ecslib/world.nim: setComponent 68/559 = 12.16%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: :anonymous 165/559 = 29.52%
+  /home/jaron/lightnecs/src/ecslib/optionsutils.nim: applyWithAll 235/559 = 42.04%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: mytest 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
+Entry: 31/78 Calls: 7/559 = 1.25% [sum: 460; 460/559 = 82.29%]
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/comparisons.nim: <% 77/559 = 13.77%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/alloc.nim: sweep 125/559 = 22.36%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: collectCTBody 146/559 = 26.12%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: collectCT 146/559 = 26.12%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: rawNewObj 198/559 = 35.42%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: newObjNoInit 198/559 = 35.42%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: :anonymous 165/559 = 29.52%
+  /home/jaron/lightnecs/src/ecslib/optionsutils.nim: applyWithAll 235/559 = 42.04%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: mytest 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
+Entry: 32/78 Calls: 7/559 = 1.25% [sum: 467; 467/559 = 83.54%]
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/arithmetics.nim: +% 110/559 = 19.68%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/alloc.nim: rawAlloc 27/559 = 4.83%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: rawNewObj 198/559 = 35.42%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: newObjNoInit 198/559 = 35.42%
+  /home/jaron/lightnecs/src/ecslib/component_list.nim: replaceComponentInList 53/559 = 9.48%
+  /home/jaron/lightnecs/src/ecslib/world.nim: setComponent 68/559 = 12.16%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: :anonymous 165/559 = 29.52%
+  /home/jaron/lightnecs/src/ecslib/optionsutils.nim: applyWithAll 235/559 = 42.04%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: mytest 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
+Entry: 33/78 Calls: 7/559 = 1.25% [sum: 474; 474/559 = 84.79%]
+  /home/jaron/lightnecs/src/ecslib/world.nim: setComponent 68/559 = 12.16%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: :anonymous 165/559 = 29.52%
+  /home/jaron/lightnecs/src/ecslib/optionsutils.nim: applyWithAll 235/559 = 42.04%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: mytest 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
+Entry: 34/78 Calls: 6/559 = 1.07% [sum: 480; 480/559 = 85.87%]
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/arithmetics.nim: +% 110/559 = 19.68%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/alloc.nim: rawAlloc 27/559 = 4.83%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: rawNewObj 198/559 = 35.42%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: newObjNoInit 198/559 = 35.42%
+  /home/jaron/lightnecs/src/ecslib/component_list.nim: getComponentFromList 72/559 = 12.88%
+  /home/jaron/lightnecs/src/ecslib/world.nim: getComponent 91/559 = 16.28%
+  /home/jaron/lightnecs/src/systems/printing_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: mytest 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
+Entry: 35/78 Calls: 6/559 = 1.07% [sum: 486; 486/559 = 86.94%]
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/comparisons.nim: <% 77/559 = 13.77%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/alloc.nim: sweep 125/559 = 22.36%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: collectCTBody 146/559 = 26.12%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: collectCT 146/559 = 26.12%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: rawNewObj 198/559 = 35.42%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: newObjNoInit 198/559 = 35.42%
+  /home/jaron/lightnecs/src/ecslib/component_list.nim: replaceComponentInList 53/559 = 9.48%
+  /home/jaron/lightnecs/src/ecslib/world.nim: setComponent 68/559 = 12.16%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: :anonymous 165/559 = 29.52%
+  /home/jaron/lightnecs/src/ecslib/optionsutils.nim: applyWithAll 235/559 = 42.04%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: mytest 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
+Entry: 36/78 Calls: 4/559 = 0.72% [sum: 490; 490/559 = 87.66%]
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/assign.nim: genericAssignAux 26/559 = 4.65%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/assign.nim: genericAssignAux 26/559 = 4.65%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/assign.nim: genericAssignAux 26/559 = 4.65%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/assign.nim: genericAssignAux 26/559 = 4.65%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/assign.nim: genericAssignAux 26/559 = 4.65%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/assign.nim: genericAssign 26/559 = 4.65%
+  /home/jaron/lightnecs/src/ecslib/entity_manager.nim: setSignature 12/559 = 2.15%
+  /home/jaron/lightnecs/src/ecslib/world.nim: addComponent 34/559 = 6.08%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: createComponentsTest 27/559 = 4.83%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
+Entry: 37/78 Calls: 4/559 = 0.72% [sum: 494; 494/559 = 88.37%]
+  /home/jaron/lightnecs/src/ecslib/optionsutils.nim: orElse 4/559 = 0.72%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: mytest 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
+Entry: 38/78 Calls: 4/559 = 0.72% [sum: 498; 498/559 = 89.09%]
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/arithmetics.nim: *% 9/559 = 1.61%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/assign.nim: genericAssignAux 26/559 = 4.65%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/assign.nim: genericAssignAux 26/559 = 4.65%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/assign.nim: genericAssignAux 26/559 = 4.65%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/assign.nim: genericAssignAux 26/559 = 4.65%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/assign.nim: genericAssign 26/559 = 4.65%
+  /home/jaron/lightnecs/src/ecslib/entity_manager.nim: getSignature 14/559 = 2.50%
+  /home/jaron/lightnecs/src/ecslib/world.nim: addComponent 34/559 = 6.08%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: createComponentsTest 27/559 = 4.83%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
+Entry: 39/78 Calls: 3/559 = 0.54% [sum: 501; 501/559 = 89.62%]
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/arithmetics.nim: +% 110/559 = 19.68%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: cellToUsr 29/559 = 5.19%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: rawNewObj 198/559 = 35.42%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: newObjNoInit 198/559 = 35.42%
+  /home/jaron/lightnecs/src/ecslib/component_list.nim: replaceComponentInList 53/559 = 9.48%
+  /home/jaron/lightnecs/src/ecslib/world.nim: setComponent 68/559 = 12.16%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: :anonymous 165/559 = 29.52%
+  /home/jaron/lightnecs/src/ecslib/optionsutils.nim: applyWithAll 235/559 = 42.04%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: mytest 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
+Entry: 40/78 Calls: 3/559 = 0.54% [sum: 504; 504/559 = 90.16%]
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/arithmetics.nim: *% 9/559 = 1.61%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/assign.nim: genericAssignAux 26/559 = 4.65%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/assign.nim: genericAssignAux 26/559 = 4.65%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/assign.nim: genericAssignAux 26/559 = 4.65%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/assign.nim: genericAssignAux 26/559 = 4.65%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/assign.nim: genericAssign 26/559 = 4.65%
+  /home/jaron/lightnecs/src/ecslib/entity_manager.nim: getSignature 14/559 = 2.50%
+  /home/jaron/lightnecs/src/ecslib/world.nim: addComponent 34/559 = 6.08%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
+Entry: 41/78 Calls: 3/559 = 0.54% [sum: 507; 507/559 = 90.70%]
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/assign.nim: genericAssignAux 26/559 = 4.65%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/assign.nim: genericAssignAux 26/559 = 4.65%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/assign.nim: genericAssignAux 26/559 = 4.65%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/assign.nim: genericAssignAux 26/559 = 4.65%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/assign.nim: genericAssign 26/559 = 4.65%
+  /home/jaron/lightnecs/src/ecslib/entity_manager.nim: setSignature 12/559 = 2.15%
+  /home/jaron/lightnecs/src/ecslib/world.nim: addComponent 34/559 = 6.08%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: createComponentsTest 27/559 = 4.83%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
+Entry: 42/78 Calls: 3/559 = 0.54% [sum: 510; 510/559 = 91.23%]
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/arithmetics.nim: +% 110/559 = 19.68%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/assign.nim: genericAssignAux 26/559 = 4.65%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/assign.nim: genericAssignAux 26/559 = 4.65%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/assign.nim: genericAssignAux 26/559 = 4.65%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/assign.nim: genericAssignAux 26/559 = 4.65%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/assign.nim: genericAssign 26/559 = 4.65%
+  /home/jaron/lightnecs/src/ecslib/entity_manager.nim: getSignature 14/559 = 2.50%
+  /home/jaron/lightnecs/src/ecslib/world.nim: addComponent 34/559 = 6.08%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: createComponentsTest 27/559 = 4.83%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
+Entry: 43/78 Calls: 3/559 = 0.54% [sum: 513; 513/559 = 91.77%]
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/arithmetics.nim: -% 9/559 = 1.61%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: usrToCell 8/559 = 1.43%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: doOperation 6/559 = 1.07%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: nimGCvisit 6/559 = 1.07%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: forAllChildren 10/559 = 1.79%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: mark 10/559 = 1.79%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: gcMark 20/559 = 3.58%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_common.nim: markStackAndRegisters 21/559 = 3.76%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: collectCTBody 146/559 = 26.12%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: collectCT 146/559 = 26.12%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: rawNewObj 198/559 = 35.42%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: newObjNoInit 198/559 = 35.42%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: :anonymous 165/559 = 29.52%
+  /home/jaron/lightnecs/src/ecslib/optionsutils.nim: applyWithAll 235/559 = 42.04%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  ...: ... 9/559 = 1.61%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: mytest 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
+Entry: 44/78 Calls: 3/559 = 0.54% [sum: 516; 516/559 = 92.31%]
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/arithmetics.nim: +% 110/559 = 19.68%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/alloc.nim: rawAlloc 27/559 = 4.83%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: rawNewObj 198/559 = 35.42%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: newObjNoInit 198/559 = 35.42%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: :anonymous 165/559 = 29.52%
+  /home/jaron/lightnecs/src/ecslib/optionsutils.nim: applyWithAll 235/559 = 42.04%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: mytest 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
+Entry: 45/78 Calls: 2/559 = 0.36% [sum: 518; 518/559 = 92.67%]
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/arithmetics.nim: -% 9/559 = 1.61%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: usrToCell 8/559 = 1.43%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: doOperation 6/559 = 1.07%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: nimGCvisit 6/559 = 1.07%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: forAllChildren 10/559 = 1.79%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: mark 10/559 = 1.79%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: gcMark 20/559 = 3.58%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_common.nim: markStackAndRegisters 21/559 = 3.76%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: collectCTBody 146/559 = 26.12%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: collectCT 146/559 = 26.12%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: rawNewObj 198/559 = 35.42%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: newObjNoInit 198/559 = 35.42%
+  /home/jaron/lightnecs/src/ecslib/component_list.nim: getComponentFromList 72/559 = 12.88%
+  /home/jaron/lightnecs/src/ecslib/world.nim: getComponent 91/559 = 16.28%
+  /home/jaron/lightnecs/src/systems/printing_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: mytest 522/559 = 93.38%
+  ...: ... 9/559 = 1.61%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
+Entry: 46/78 Calls: 2/559 = 0.36% [sum: 520; 520/559 = 93.02%]
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/arithmetics.nim: +% 110/559 = 19.68%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: cellToUsr 29/559 = 5.19%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: rawNewObj 198/559 = 35.42%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: newObjNoInit 198/559 = 35.42%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/pure/options.nim: some 62/559 = 11.09%
+  /home/jaron/lightnecs/src/ecslib/component_list.nim: queryComponentFromList 76/559 = 13.60%
+  /home/jaron/lightnecs/src/ecslib/world.nim: queryComponent 97/559 = 17.35%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: mytest 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
+Entry: 47/78 Calls: 2/559 = 0.36% [sum: 522; 522/559 = 93.38%]
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/comparisons.nim: <=% 4/559 = 0.72%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/alloc.nim: interiorAllocatedPtr 5/559 = 0.89%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: gcMark 20/559 = 3.58%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_common.nim: markStackAndRegisters 21/559 = 3.76%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: collectCTBody 146/559 = 26.12%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: collectCT 146/559 = 26.12%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: rawNewObj 198/559 = 35.42%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: newObjNoInit 198/559 = 35.42%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: :anonymous 165/559 = 29.52%
+  /home/jaron/lightnecs/src/ecslib/optionsutils.nim: applyWithAll 235/559 = 42.04%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: mytest 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
+Entry: 48/78 Calls: 2/559 = 0.36% [sum: 524; 524/559 = 93.74%]
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/comparisons.nim: <% 77/559 = 13.77%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: gcMark 20/559 = 3.58%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_common.nim: markStackAndRegisters 21/559 = 3.76%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: collectCTBody 146/559 = 26.12%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: collectCT 146/559 = 26.12%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: rawNewObj 198/559 = 35.42%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: newObjNoInit 198/559 = 35.42%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: :anonymous 165/559 = 29.52%
+  /home/jaron/lightnecs/src/ecslib/optionsutils.nim: applyWithAll 235/559 = 42.04%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: mytest 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
+Entry: 49/78 Calls: 2/559 = 0.36% [sum: 526; 526/559 = 94.10%]
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/alloc.nim: mappingInsert 2/559 = 0.36%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/alloc.nim: addChunkToMatrix 2/559 = 0.36%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/alloc.nim: freeBigChunk 3/559 = 0.54%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/alloc.nim: rawDealloc 3/559 = 0.54%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: freeCyclicCell 3/559 = 0.54%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: sweep 125/559 = 22.36%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: collectCTBody 146/559 = 26.12%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: collectCT 146/559 = 26.12%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: rawNewObj 198/559 = 35.42%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: newObjNoInit 198/559 = 35.42%
+  /home/jaron/lightnecs/src/ecslib/component_list.nim: getComponentFromList 72/559 = 12.88%
+  /home/jaron/lightnecs/src/ecslib/world.nim: getComponent 91/559 = 16.28%
+  /home/jaron/lightnecs/src/systems/printing_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: mytest 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
+Entry: 50/78 Calls: 2/559 = 0.36% [sum: 528; 528/559 = 94.45%]
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/arithmetics.nim: +% 110/559 = 19.68%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: cellToUsr 29/559 = 5.19%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: forAllChildren 10/559 = 1.79%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: mark 10/559 = 1.79%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: gcMark 20/559 = 3.58%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_common.nim: markStackAndRegisters 21/559 = 3.76%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: collectCTBody 146/559 = 26.12%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: collectCT 146/559 = 26.12%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: rawNewObj 198/559 = 35.42%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/gc_ms.nim: newObjNoInit 198/559 = 35.42%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/pure/options.nim: some 62/559 = 11.09%
+  /home/jaron/lightnecs/src/ecslib/component_list.nim: queryComponentFromList 76/559 = 13.60%
+  /home/jaron/lightnecs/src/ecslib/world.nim: queryComponent 97/559 = 17.35%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/systems/appending_system.nim: run 522/559 = 93.38%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: mytest 522/559 = 93.38%
+  ...: ... 9/559 = 1.61%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
+Entry: 51/78 Calls: 2/559 = 0.36% [sum: 530; 530/559 = 94.81%]
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/assign.nim: genericAssignAux 26/559 = 4.65%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/assign.nim: genericAssignAux 26/559 = 4.65%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/assign.nim: genericAssignAux 26/559 = 4.65%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/assign.nim: genericAssignAux 26/559 = 4.65%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/assign.nim: genericAssignAux 26/559 = 4.65%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/assign.nim: genericAssign 26/559 = 4.65%
+  /home/jaron/lightnecs/src/ecslib/entity_manager.nim: getSignature 14/559 = 2.50%
+  /home/jaron/lightnecs/src/ecslib/world.nim: addComponent 34/559 = 6.08%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: createComponentsTest 27/559 = 4.83%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
+Entry: 52/78 Calls: 2/559 = 0.36% [sum: 532; 532/559 = 95.17%]
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/iterators_1.nim: entitySignatureChanged 4/559 = 0.72%
+  /home/jaron/lightnecs/src/ecslib/world.nim: addComponent 34/559 = 6.08%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: createComponentsTest 27/559 = 4.83%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
+Entry: 53/78 Calls: 2/559 = 0.36% [sum: 534; 534/559 = 95.53%]
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/arithmetics.nim: *% 9/559 = 1.61%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/assign.nim: genericAssignAux 26/559 = 4.65%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/assign.nim: genericAssignAux 26/559 = 4.65%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/assign.nim: genericAssignAux 26/559 = 4.65%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/assign.nim: genericAssignAux 26/559 = 4.65%
+  /home/jaron/.choosenim/toolchains/nim-1.4.4/lib/system/assign.nim: genericAssign 26/559 = 4.65%
+  /home/jaron/lightnecs/src/ecslib/entity_manager.nim: setSignature 12/559 = 2.15%
+  /home/jaron/lightnecs/src/ecslib/world.nim: addComponent 34/559 = 6.08%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: createComponentsTest 27/559 = 4.83%
+  /home/jaron/lightnecs/src/ecstest/ecs.nim: ecs 557/559 = 99.64%
