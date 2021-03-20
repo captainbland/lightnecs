@@ -1,47 +1,130 @@
 import ../components/printable_component
 import ../components/appending_component
+import ../components/draw_rect_component
+
 import macros
+import strutils
+import sequtils
+import sugar
 
-macro createGenericMap(): untyped =
-    result = quote do: 
-        type MyMap* = ref object of RootObj
-            my_PrintableComponent: PrintableComponent
-            my_AppendingComponent: AppendingComponent
+proc `[]`(x: NimNode, kind: NimNodeKind): seq[NimNode] {.compiletime.} =
+    return toSeq(x.children).filter(c => c.kind == kind )
+
+proc createAccessorProcs(map_name: string, my_type: string): NimNode {.compileTime.} =
+  nnkStmtList.newTree(
+  nnkProcDef.newTree(
+    newIdentNode("get" & my_type),
+    newEmptyNode(),
+    newEmptyNode(),
+    nnkFormalParams.newTree(
+      newIdentNode(my_type),
+      nnkIdentDefs.newTree(
+        newIdentNode("self"),
+        newIdentNode(map_name),
+        newEmptyNode()
+      )
+    ),
+    newEmptyNode(),
+    newEmptyNode(),
+    nnkStmtList.newTree(
+      nnkDotExpr.newTree(
+        newIdentNode("self"),
+        newIdentNode("my_" & my_type)
+      )
+    )
+  ),
+  nnkProcDef.newTree(
+    newIdentNode("put" & my_type),
+    newEmptyNode(),
+    newEmptyNode(),
+    nnkFormalParams.newTree(
+      newEmptyNode(),
+      nnkIdentDefs.newTree(
+        newIdentNode("self"),
+        newIdentNode(map_name),
+        newEmptyNode()
+      ),
+      nnkIdentDefs.newTree(
+        newIdentNode("component"),
+        newIdentNode(my_type),
+        newEmptyNode()
+      )
+    ),
+    newEmptyNode(),
+    newEmptyNode(),
+    nnkStmtList.newTree(
+      nnkAsgn.newTree(
+        nnkDotExpr.newTree(
+          newIdentNode("self"),
+          newIdentNode("my_" & my_type)
+        ),
+        newIdentNode("component")
+      )
+    )
+  ))
+
+proc createTemplateSugar(map_name: string): NimNode {.compileTime.} =
+  nnkStmtList.newTree(
+    parseExpr("template `[]` (self: $1, param: untyped): untyped = `get param`(self)".format(map_name)),
+    parseExpr("template `[]=` (self: $1, param: untyped, value: untyped): untyped = `put param`(self, value)".format(map_name))
+  )
+
+macro createGenericMap(map_name: string, my_types: varargs[typed]): untyped =
+  var statementList = nnkStmtList.newTree()
+  var recList = nnkRecList.newTree()
+  echo treeRepr my_types
+  for my_type in my_types:
+    var name = my_type.strVal
+
+    var type_name = my_type
+    recList.add(nnkIdentDefs.newTree(
+                newIdentNode("my_" & name),
+                newIdentNode(name),
+                newEmptyNode()))
 
 
-    echo treeRepr result
-            
+  let typedef = nnkStmtList.newTree(
+    nnkTypeSection.newTree(
+      nnkTypeDef.newTree(
+        nnkPostfix.newTree(
+          newIdentNode("*"),
+          newIdentNode(map_name.strVal)
+        ),
+        newEmptyNode(),
+        nnkRefTy.newTree(
+          nnkObjectTy.newTree(
+            newEmptyNode(),
+            nnkOfInherit.newTree(
+              newIdentNode("RootObj")
+            ),
+            recList
+          )
+        )
+      )
+    )
+  )
 
-createGenericMap()
+  statement_list.add(typedef)
+
+  for my_type in my_types:
+    var name = my_type.strVal
+    statement_list.add(createAccessorProcs(map_name.strVal, name))
+  
+  statement_list.add(createTemplateSugar(map_name.strVal))
+
+  #statement_list.add quote do: 
+
+  return statement_list
 
 echo "SPACE ==="
 echo ""
 
-dumpTree:
-     type MyMap* = ref object of RootObj
-            my_PrintableComponent: PrintableComponent
-            my_AppendingComponent: AppendingComponent
+createGenericMap("MyMap", AppendingComponent, PrintableComponent, DrawRectComponent)
 
 
 
-proc getPrintableComponent(self: MyMap): PrintableComponent = self.my_PrintableComponent
-proc putPrintableComponent(self: MyMap, component: PrintableComponent) =
-    self.my_PrintableComponent = component
-
-
-proc getAppendingComponent(self: MyMap): AppendingComponent = self.my_AppendingComponent
-proc putAppendingComponent(self: MyMap, component: AppendingComponent) =
-    self.my_AppendingComponent = component
-
-
-#proc get[T](self: MyMap): T = discard
-
-template `[]` (self: MyMap, param: untyped): untyped =
-    `get param`(self)
-
-
-template `[]=` (self: MyMap, param: untyped, value: untyped): untyped =
-    `put param`(self, value)
+  # template `[]` (self: MyMap, param: untyped): untyped = `get param`(self)
+  # template `[]=` (self: MyMap, param: untyped, value: untyped): untyped = `put param`(self, value)
 
 
 
