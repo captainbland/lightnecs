@@ -1,11 +1,19 @@
 import ../ecslib/generic_map 
+import ../ecslib/component_list
 import ../components/[printable_component, appending_component, draw_rect_component]
+import typetraits
+import strutils
 
-
-createGenericMap("MyMap", AppendingComponent, PrintableComponent, DrawRectComponent)
+generateGenericMap("MyMap", ComponentList, AppendingComponent, PrintableComponent, DrawRectComponent)
 
 
 var my_map = MyMap()
 
-my_map[PrintableComponent] = PrintableComponent(my_data: "something")
-echo my_map[PrintableComponent].my_data
+
+my_map[PrintableComponent] = ComponentList[PrintableComponent]()
+
+
+proc accessGeneric[T](): void =
+    discard my_map[T]
+
+accessGeneric[PrintableComponent]()

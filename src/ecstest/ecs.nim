@@ -8,16 +8,22 @@ import ../components/appending_component
 import ../systems/appending_system
 
 import ../ecslib/my_system 
-
+import ../ecslib/component_list
 import ../ecslib/entity
 import ../ecslib/world
+import ../ecslib/generic_map
 import tables
 
-var my_world: World = getWorld()
+
+generateGenericMap("ComponentListMap", ComponentList,
+   PrintingSystem,
+   AppendingSystem)
+
+var my_world: World[ComponentListMap] = getWorld(ComponentListMap())
 echo my_world.am_world
 
 let my_printing_system = my_world.registerSystem(PrintingSystem())
-my_world.setSystemSignature(my_printing_system, newSignature(getComponentType[PrintableComponent](my_world)))
+my_world.setSystemSignature(my_printing_system, newSignature(getComponentType(my_world, PrintableComponent)))
 
 let my_appending_system = my_world.registerSystem(AppendingSystem())
 my_world.setSystemSignature(my_appending_system, newSignature(getComponentType[AppendingComponent](my_world), getComponentType[PrintableComponent](my_world)))

@@ -14,37 +14,37 @@ import strutils
 import my_system
 
 type
-    World[ComponentMapT]* = ref object of RootObj
+    World*[CompListT] = ref object of RootObj
         #component_manager: ComponentManager
         system_manager: SystemManager
         entity_manager: EntityManager
         am_world*: string
         component_list_destroyers: Table[ComponentType, proc(entity: Entity)]
         component_list_serialisers: Table[ComponentType, proc(): JsonNode]
-        component_lists: Table[ComponentType, AbstractComponentList]
+        component_lists: CompListT
         
 
 
-proc getWorld*(): World =
+proc getWorld*[CompListT](component_lists: CompListT): World[CompListT] =
     # 1 world per app that's the rules
-    var world = World(
+    var world = World[CompListT](
         system_manager: newSystemManager(),
         entity_manager: newEntityManager(),
         am_world: "i am a world",
         component_list_destroyers: initTable[ComponentType, proc(entity: Entity)](),
         component_list_serialisers: initTable[ComponentType, proc(): JsonNode](),
-
+        component_lists: component_lists
     )
 
     return world
 
-proc createEntity*(self: World): Entity =
+proc createEntity*[CompListT](self: World[CompListT]): Entity =
     return self.entity_manager.newEntity()
 
 
-proc addComponent*[T](self: World, entity: Entity, component: T): void =
-    let my_component_type = getComponentList[T]().getComponentTypeFromList()
-    let my_component_list = getComponentList[T]()
+proc addComponent*[T, CompListT](self: World[CompListT], entity: Entity, component: T): void =
+    let my_component_type = self.component_lists[T].getComponentTypeFromList()
+    let my_component_list = self.component_lists[T]
 
     my_component_list.addEntityComponent(entity, component)
     var signature = self.entityManager.getSignature(entity)
@@ -56,39 +56,39 @@ proc addComponent*[T](self: World, entity: Entity, component: T): void =
     self.component_list_serialisers[my_component_type] = my_component_list.getSerialiser()
 
 
-proc removeComponent*[T](self: World, entity: Entity): void = 
+proc removeComponent*[T, CompListT](self: World[CompListT], entity: Entity): void = 
     getComponentList[T]().removeComponentFromList(entity)
 
 
-proc setComponent*[T](self: World, entity: Entity, component: T): void = 
+proc setComponent*[T, CompListT](self: World[CompListT], entity: Entity, component: T): void = 
     let my_component_list = getComponentList[T]()
     replaceComponentInList[T](my_component_list, entity, component)
 
    
 
-proc getComponent*[T](self: World, entity: Entity): T {.inline.} =
-    return getComponentList[T]().getComponentFromList(entity)
+proc getComponent*[T, CompListT](self: World[CompListT], entity: Entity): T {.inline.} =
+    return self.component_lists[T].getComponentFromList(entity)
 
 #note: using queryComponent is about half as fast as getComponent, but is safer
-proc queryComponent*[T](self: World, entity: Entity): Option[T] {.inline.} =
-    return getComponentList[T]().queryComponentFromList(entity)
+proc queryComponent*[T, CompListT](self: World[CompListT], entity: Entity): Option[T] {.inline.} =
+    return self.component_lists[T].queryComponentFromList(entity)
 
 
-proc getComponentType*[T](self: World): ComponentType =
-    return getComponentList[T]().getComponentTypeFromList()
+template getComponentType*(self:untyped, typename: untyped): untyped =
+    return getComponentTypeFromList(self.component_lists[typename])
 
-proc registerSystem*[T](self: World, sys: T): T =
+proc registerSystem*[T, CompListT](self: World[CompListT], sys: T): T =
     return self.system_manager.registerSystem(sys)
 
-proc setSystemSignature*[T](self: World, sys: T, my_signature: Signature): void =
+proc setSystemSignature*[T, CompListT](self: World[CompListT], sys: T, my_signature: Signature): void =
     setSignatureFromManager[T](self.system_manager, sys, my_signature)
 
-proc destroyEntity*(self: World, entity:Entity): void =
+proc destroyEntity*[CompListT](self: World[CompListT], entity:Entity): void =
     for destroyer in self.component_list_destroyers.values:
         destroyer(entity)
     self.system_manager.entityDestroyed(entity)
 
-proc serialise*(self: World): string =
+proc serialise*[CompListT](self: World[CompListT]): string =
     let serialisers = self.component_list_serialisers
     var world_json = %*{}
     for comp_type, serialiser in serialisers:
