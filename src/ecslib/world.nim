@@ -21,7 +21,7 @@ type
         am_world*: string
         component_list_destroyers: Table[ComponentType, proc(entity: Entity)]
         component_list_serialisers: Table[ComponentType, proc(): JsonNode]
-        component_lists: CompListT
+        component_lists*: CompListT
         
 
 
@@ -64,6 +64,7 @@ proc setComponent*[T, CompListT](self: World[CompListT], entity: Entity, compone
     let my_component_list = getComponentList[T]()
     replaceComponentInList[T](my_component_list, entity, component)
 
+    
    
 
 proc getComponent*[T, CompListT](self: World[CompListT], entity: Entity): T {.inline.} =
@@ -74,8 +75,8 @@ proc queryComponent*[T, CompListT](self: World[CompListT], entity: Entity): Opti
     return self.component_lists[T].queryComponentFromList(entity)
 
 
-template getComponentType*(self:untyped, typename: untyped): untyped =
-    return getComponentTypeFromList(self.component_lists[typename])
+proc getComponentType*[CompListT, T](self: World[CompListT]): ComponentType =
+    return getComponentTypeFromList(self.component_lists[T])
 
 proc registerSystem*[T, CompListT](self: World[CompListT], sys: T): T =
     return self.system_manager.registerSystem(sys)

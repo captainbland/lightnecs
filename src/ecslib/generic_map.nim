@@ -30,7 +30,7 @@ proc generateFacade(map_name: string, container_name: string): NimNode {.compile
         var x = getTypeInst(param)[1].symbol.getImpl
         let paramName=x[0].as_str()
         echo "paramname is : ", paramname
-        parseExpr(self.strVal & ".get" & paramName & "()")
+        parseExpr(self.toStrLit().strVal & ".get" & paramName & "()")
         """.format(map_name)),
 
       parseExpr(dedent """
@@ -38,7 +38,7 @@ proc generateFacade(map_name: string, container_name: string): NimNode {.compile
         var x = getTypeInst(param)[1].symbol.getImpl
         let paramName=x[0].as_str()
         echo "paramname is : ", paramname
-        parseExpr(self.strVal & ".set" & paramName & "(" & component.toStrLit().strVal & ")")
+        parseExpr(self.toStrLit().strVal & ".set" & paramName & "(" & component.toStrLit().strVal & ")")
         """.format(map_name))
       # parseExpr("proc get*[T](map: $1): $2[T] = map[T.name()]".format(map_name, container_name)),
       # parseExpr("proc set*[T](map: $1, component: T): $2[T] = map[T.name()] = component".format(map_name, container_name))

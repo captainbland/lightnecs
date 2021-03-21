@@ -16,17 +16,17 @@ import tables
 
 
 generateGenericMap("ComponentListMap", ComponentList,
-   PrintingSystem,
-   AppendingSystem)
+   PrintableComponent,
+   AppendingComponent)
 
 var my_world: World[ComponentListMap] = getWorld(ComponentListMap())
 echo my_world.am_world
 
 let my_printing_system = my_world.registerSystem(PrintingSystem())
-my_world.setSystemSignature(my_printing_system, newSignature(getComponentType(my_world, PrintableComponent)))
+my_world.setSystemSignature(my_printing_system, newSignature(getComponentType[ComponentListMap, PrintableComponent](my_world)))
 
 let my_appending_system = my_world.registerSystem(AppendingSystem())
-my_world.setSystemSignature(my_appending_system, newSignature(getComponentType[AppendingComponent](my_world), getComponentType[PrintableComponent](my_world)))
+my_world.setSystemSignature(my_appending_system, newSignature(getComponentType[ComponentListMap, AppendingComponent](my_world), getComponentType[ComponentListMap, PrintableComponent](my_world)))
 for x in 0..1000:
 
   let my_entity = my_world.createEntity()
