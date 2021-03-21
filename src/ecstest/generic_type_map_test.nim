@@ -17,3 +17,4 @@ proc accessGeneric[T](): void =
     discard my_map[T]
 
 accessGeneric[PrintableComponent]()
+
