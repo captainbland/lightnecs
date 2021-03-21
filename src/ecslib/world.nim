@@ -14,7 +14,7 @@ import strutils
 import my_system
 
 type
-    World* = ref object of RootObj
+    World[ComponentMapT]* = ref object of RootObj
         #component_manager: ComponentManager
         system_manager: SystemManager
         entity_manager: EntityManager
@@ -22,6 +22,8 @@ type
         component_list_destroyers: Table[ComponentType, proc(entity: Entity)]
         component_list_serialisers: Table[ComponentType, proc(): JsonNode]
         component_lists: Table[ComponentType, AbstractComponentList]
+        
+
 
 proc getWorld*(): World =
     # 1 world per app that's the rules
