@@ -42,7 +42,9 @@ proc endThread*(self:PrintingSystem) =
     chan.close()
     thread_killer.close()
 
-    
+method onAddEntity*(system: PrintingSystem, entity: Entity): void = 
+    discard
+    #echo "Printing system add entity ", entity
 
 proc run*(self: PrintingSystem, my_world: World) =
     #echo "trying to run printing system"

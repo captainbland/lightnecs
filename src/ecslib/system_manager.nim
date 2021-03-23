@@ -38,7 +38,8 @@ proc entitySignatureChanged*(self: SystemManager, entity: Entity, entity_signatu
         #echo "entity signature: ", entity_signature
         if self.signatures[type_hash].intersection(entity_signature) == system_signature:
             #echo "entity signature and including"
-
-            system.entities.incl(entity)
+            if system.entities.containsOrIncl(entity):
+                system.onAddEntity(entity)
+            
         else:
             system.entities.excl(entity)

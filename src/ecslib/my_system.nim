@@ -18,3 +18,5 @@ type
 
 method run*(system: MySystem, entities: seq[Entity]): void = 
      echo "I am not implemented!"
+
+method onAddEntity*(system: MySystem, entity: Entity): void {.base.} = echo "I am not implemented"

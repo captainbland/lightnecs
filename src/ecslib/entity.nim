@@ -1,4 +1,4 @@
-const MAX_ENTITIES* = 10000
+const MAX_ENTITIES* = 30000
 
 type
     Entity* = int16

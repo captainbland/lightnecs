@@ -111,7 +111,7 @@ while runGame:
         else:
             input_sys.on_poll(my_world, addr evt)
     
-    #sleep(33)
+    sleep(33)
     input_sys.on_update(my_world, 1.0)
     relative_position_sys.run(my_world, 1.0)
     render.setDrawColor 0,0,0,255

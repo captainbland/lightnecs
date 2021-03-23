@@ -61,7 +61,7 @@ benchmark("thing", mytest())
 
 benchmark("create components!", createComponentsTest())
 
-echo my_world.serialise()
+#echo my_world.serialise()
 
 my_printing_system.endThread()
 

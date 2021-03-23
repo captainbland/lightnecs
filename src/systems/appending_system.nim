@@ -11,6 +11,10 @@ import ../ecslib/optionsutils
 type
     AppendingSystem* = ref object of MySystem
 
+method onAddEntity*(system: AppendingSystem, entity: Entity): void = 
+    discard
+    #echo "Appending system add entity ", entity
+
 method run*(self: AppendingSystem, my_world: World) =
     #echo "trying to run printing system"
     

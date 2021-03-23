@@ -45,8 +45,10 @@ proc getComponentTypeFromList*[T](self: ComponentList[T]): ComponentType =
 #singleton each component manager
 proc getComponentList*[T](): ComponentList[T] =  
     # static considered ok here because component types are considered to be program-level objects
-    var thisComponentList  {.global.}: ComponentList[T] = newComponentList[T]()
-    return thisComponentList
+    var thisComponentList  {.threadVar.}: Option[ComponentList[T]] 
+    if thisComponentList.isNone:
+        thisComponentList = some(newComponentList[T]())
+    return thisComponentList.get()
 
 proc addEntityComponent*[T](self: ComponentList[T], entity: Entity, component: T): void = 
     #probably very not thread safe
