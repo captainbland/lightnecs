@@ -18,7 +18,7 @@ echo my_world.am_world
 
 let my_printing_system = my_world.registerSystem(PrintingSystem())
 my_world.setSystemSignature(my_printing_system, newSignature(getComponentType[PrintableComponent](my_world)))
-
+my_printing_system.startThread()
 let my_appending_system = my_world.registerSystem(AppendingSystem())
 my_world.setSystemSignature(my_appending_system, newSignature(getComponentType[AppendingComponent](my_world), getComponentType[PrintableComponent](my_world)))
 for x in 0..1000:
@@ -61,7 +61,9 @@ benchmark("thing", mytest())
 
 benchmark("create components!", createComponentsTest())
 
-#echo my_world.serialise()
+echo my_world.serialise()
+
+my_printing_system.endThread()
 
 # # let some_component: Component = PrintableComponent(my_data: "hi")
 # # PrintingSystem().run(some_component)
