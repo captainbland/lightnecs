@@ -49,7 +49,7 @@ method onAddEntity*(system: PrintingSystem, entity: Entity): void =
 proc run*(self: PrintingSystem, my_world: World) =
     #echo "trying to run printing system"
     for entity in self.entities:
-        chan.send(queryComponent[PrintableComponent](my_world, entity))
+        chan.send(queryComponent[PrintableComponent](self.world, entity))
 
         # default runs in about 0.561s for 1000 entities, 10k iters
 

@@ -24,7 +24,7 @@ type
         name*: string
         hash*: Hash
         entities*: HashSet[Entity]
-        #world*: World
+        world*: World
     
     SystemType* = Hash
 

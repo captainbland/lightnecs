@@ -1,4 +1,4 @@
-import ../ecslib/entity
+import ../ecslib/ecs
 
 type
     ParentComponent* = ref object of RootObj

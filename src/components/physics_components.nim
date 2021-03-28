@@ -1,15 +1,16 @@
 import ../chipmunk/chipmunk
 
 type
-    PhysicsBody* = ref object of RootObj
+    PhysicsBodyComponent* = ref object of RootObj
         body*: BodyPtr
+        space*: SpacePtr
     
     ShapeType* = enum 
         Rectangle
 
-    PhysicsShape* = ref object of RootObj
+    PhysicsShapeComponent* = ref object of RootObj
         chipmunkShape*: ShapePtr
-        case shapeType: ShapeType
+        case shapeType*: ShapeType
             of Rectangle:
                 width*: float
                 height*: float

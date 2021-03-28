@@ -65,6 +65,7 @@ proc getComponentType*[T](self: World): ComponentType =
     return getComponentList[T]().getComponentTypeFromList()
 
 proc registerSystem*[T](self: World, sys: T): T =
+    sys.world = self
     return self.system_manager.registerSystem(sys)
 
 proc setSystemSignature*[T](self: World, sys: T, my_signature: Signature): void =
