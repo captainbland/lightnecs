@@ -1,11 +1,6 @@
-import entity
-import component
 import deques
+import types 
 
-type 
-    EntityManager* = ref object of RootObj
-         signatures: array[MAX_ENTITIES, Signature]
-         next_id_queue: Deque[Entity]
 
 proc newEntityManager*(): EntityManager =
     var my_deque = initDeque[Entity]()

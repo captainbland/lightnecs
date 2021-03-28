@@ -1,9 +1,6 @@
 import tables
 import sets
 
-import ../ecslib/component
-import entity
-
 import component_list
 import system_manager
 import entity_manager
@@ -12,16 +9,8 @@ import options
 import json
 import strutils
 import my_system
+import types
 
-type
-    World* = ref object of RootObj
-        #component_manager: ComponentManager
-        system_manager: SystemManager
-        entity_manager: EntityManager
-        am_world*: string
-        component_list_destroyers: Table[ComponentType, proc(entity: Entity)]
-        component_list_serialisers: Table[ComponentType, proc(): JsonNode]
-        component_lists: Table[ComponentType, AbstractComponentList]
 
 proc getWorld*(): World =
     # 1 world per app that's the rules

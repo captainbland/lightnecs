@@ -2,15 +2,15 @@
 
 
 import ../components/printable_component
-import ../ecslib/component
 import ../systems/printing_system 
 import ../components/appending_component 
 import ../systems/appending_system
 
 import ../ecslib/my_system 
 
-import ../ecslib/entity
 import ../ecslib/world
+import ../ecslib/types
+
 import tables
 
 var my_world: World = getWorld()

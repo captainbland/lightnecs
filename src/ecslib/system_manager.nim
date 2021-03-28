@@ -1,16 +1,12 @@
-import component 
 import my_system 
-import entity 
 import sets
 import tables
 import intsets
 import typetraits
 import hashes
+import types 
 
-type
-    SystemManager* = ref object of RootObj 
-        signatures: Table[SystemType, Signature]
-        systems: Table[SystemType, MySystem]
+
 
 proc newSystemManager*(): SystemManager =
     SystemManager(signatures: initTable[SystemType, Signature](),

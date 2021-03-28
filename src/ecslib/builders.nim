@@ -1,11 +1,7 @@
 import world
-import entity
-import component
+import types
 
-type
-    EntityBuilder* = ref object of RootObj
-        my_world: World
-        my_entity: Entity
+
 
 proc newEntityBuilder*(the_world: World): EntityBuilder =
     return EntityBuilder(my_entity: the_world.createEntity(), my_world: the_world)

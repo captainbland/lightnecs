@@ -1,5 +1,3 @@
-import component
-import entity
 import options
 import json
 
@@ -9,13 +7,11 @@ export tables.`[]`
 import hashes
 import typetraits
 import strutils
-#import json
+import types
 
 var component_type_counter: ComponentType = 0
 
 type
-    AbstractComponentList* = ref object of RootObj
-        component_type_id: ComponentType
 
     ComponentList*[T] = ref object of AbstractComponentList
         entity_index_list: array[MAX_ENTITIES, int]

@@ -6,7 +6,7 @@ import ../components/printable_component
 import ../ecslib/my_system
 import ../ecslib/world
 import ../ecslib/optionsutils
-import ../ecslib/entity
+import ../ecslib/types
 import sugar
 import os
 import options
