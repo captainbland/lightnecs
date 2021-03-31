@@ -2,7 +2,8 @@ import sdl2
 import os
 import chipmunk/chipmunk
 import ecslib/ecs
-import components/[draw_rect_component, position_component, player_input_component, parent_component]
+import ecslib/[parent_component, children_component]
+import components/[draw_rect_component, position_component, player_input_component]
 import systems/[draw_rect_system, player_input_system, relative_position_system, animation_system]
 import asset_management/sprite_manager
 import glm

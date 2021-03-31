@@ -15,6 +15,8 @@ type
                 width*: float
                 height*: float
     
+    SpaceComponent* = ref object of RootObj
+        space*: SpacePtr
 
 # proc loadPhysicsBody(space: SpacePtr, mass=5.0): PhysicsBody =
 #     space.addBody(chipmunk.newBody(mass))

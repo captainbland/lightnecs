@@ -36,6 +36,7 @@ type
         component_list_destroyers*: Table[ComponentType, proc(entity: Entity)]
         component_list_serialisers*: Table[ComponentType, proc(): JsonNode]
         component_lists*: Table[ComponentType, AbstractComponentList]
+        globalEntity*: Entity
 
     SystemManager* = ref object of RootObj 
         signatures*: Table[SystemType, Signature]

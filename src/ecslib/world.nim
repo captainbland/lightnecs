@@ -12,6 +12,9 @@ import my_system
 import types
 
 
+proc createEntity*(self: World): Entity =
+    return self.entity_manager.newEntity()
+
 proc getWorld*(): World =
     # 1 world per app that's the rules
     var world = World(
@@ -22,14 +25,11 @@ proc getWorld*(): World =
         component_list_serialisers: initTable[ComponentType, proc(): JsonNode](),
 
     )
-
+    world.globalEntity = world.createEntity()
     return world
 
-proc createEntity*(self: World): Entity =
-    return self.entity_manager.newEntity()
 
-
-proc addComponent*[T](self: World, entity: Entity, component: T): void =
+proc addComponent*[T](self: World, entity: Entity, component: T): T {.discardable.} =
     let my_component_type = getComponentList[T]().getComponentTypeFromList()
     let my_component_list = getComponentList[T]()
 
@@ -41,6 +41,7 @@ proc addComponent*[T](self: World, entity: Entity, component: T): void =
     self.system_manager.entitySignatureChanged(entity, signature)
     self.component_list_destroyers[my_component_type] = my_component_list.getComponentRemover()
     self.component_list_serialisers[my_component_type] = my_component_list.getSerialiser()
+    return component
 
 
 proc removeComponent*[T](self: World, entity: Entity): void = 
@@ -60,6 +61,7 @@ proc getComponent*[T](self: World, entity: Entity): T {.inline.} =
 proc queryComponent*[T](self: World, entity: Entity): Option[T] {.inline.} =
     return getComponentList[T]().queryComponentFromList(entity)
 
+#fixme... proc getComponentOrSet*[T](self: World, entity: Entity): T
 
 proc getComponentType*[T](self: World): ComponentType =
     return getComponentList[T]().getComponentTypeFromList()

@@ -1,0 +1,3 @@
+type
+    LabelComponent = string
+
