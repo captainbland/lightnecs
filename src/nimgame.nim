@@ -3,10 +3,11 @@ import os
 import chipmunk/chipmunk
 import ecslib/ecs
 import ecslib/[parent_component, children_component]
-import components/[draw_rect_component, position_component, player_input_component]
-import systems/[draw_rect_system, player_input_system, relative_position_system, animation_system]
+import components/[draw_rect_component, position_component, player_input_component, physics_components]
+import systems/[draw_rect_system, player_input_system, relative_position_system, animation_system, physics_system]
 import asset_management/sprite_manager
 import glm
+
 import asset_management/sprite_manager
 import os
 discard sdl2.init(INIT_EVERYTHING)
@@ -14,9 +15,9 @@ discard sdl2.init(INIT_EVERYTHING)
 var
     window: WindowPtr
     render: RendererPtr
-
+let meter = (32.0)/1.61
 var space = chipmunk.newSpace()
-
+space.gravity = vec2d(0,9.8*meter)
 var my_world: World = getWorld()
 echo my_world.am_world
 
@@ -26,7 +27,7 @@ let draw_rect_sys = createSystem(my_world, DrawRectSystem(), DrawRectComponent()
 let input_sys = createSystem(my_world, PlayerInputSystem(), RelativePositionComponent(), PlayerInputComponent())
 let relative_position_sys = createSystem(my_world, RelativePositionSystem(), RelativePositionComponent(), AbsolutePositionComponent(), ParentComponent())
 let animation_sys = createSystem(my_world, AnimationSystem(), AbsolutePositionComponent(), Sprite(), AnimationInfo())
-
+let physics_sys = createSystem(my_world, PhysicsSystem(name: "physics"), AbsolutePositionComponent(), PhysicsBodyComponent(), PhysicsShapeComponent())
 
 
 #SDL setup
@@ -38,6 +39,8 @@ var my_sprite_manager = newSpriteManager("assets/sprites", render)
 let (flaremage_sprite, flaremage_anim) = my_sprite_manager.loadSpritesheet("flaremage-stand-left")
 
 #entities
+my_world.addComponent(my_world.globalEntity, SpaceComponent(space: space))
+
 let root_entity = createEntity(my_world, AbsolutePositionComponent(pos:vec2i(0,0)))
 
 let player_entity = createEntity(my_world,
@@ -46,7 +49,9 @@ let player_entity = createEntity(my_world,
  AbsolutePositionComponent(), 
  RelativePositionComponent(pos:vec2i(10,10)), 
  PlayerInputComponent(),
- ParentComponent(entity:root_entity))
+ ParentComponent(entity:root_entity),
+ PhysicsBodyComponent(),
+ PhysicsShapeComponent(shapeType: physics_components.ShapeType.Rectangle, width:26, height:32))
 
 # # uncomment for entity spam fun
 # for x in 0..100:
@@ -113,6 +118,7 @@ while runGame:
             input_sys.on_poll(my_world, addr evt)
     
     sleep(33)
+    physics_sys.run()
     input_sys.on_update(my_world, 1.0)
     relative_position_sys.run(my_world, 1.0)
     render.setDrawColor 0,0,0,255
@@ -123,4 +129,5 @@ while runGame:
 
 destroy render
 destroy window
+chipmunk.free space
 echo my_world.serialise()

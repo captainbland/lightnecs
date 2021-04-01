@@ -10,7 +10,7 @@ import ../ecslib/ecs
 import ../ecslib/optionsutils
 
 import ../components/position_component
-import ../components/parent_component
+import ../ecslib/parent_component
 
 type
     RelativePositionSystem* = ref object of MySystem

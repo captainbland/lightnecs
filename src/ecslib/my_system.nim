@@ -8,6 +8,6 @@ import types
 #     echo "I am not implemented!"
 
 method run*(system: MySystem, entities: seq[Entity]): void = 
-     echo "I am not implemented!"
+     echo "run not implemented for ", system.name
 
-method onAddEntity*(system: MySystem, entity: Entity): void {.base.} = echo "I am not implemented"
+method onAddEntity*(system: MySystem, entity: Entity): void {.base.} = echo "onAddEntity not implemented for ", system.name
