@@ -27,7 +27,7 @@ let draw_rect_sys = createSystem(my_world, DrawRectSystem(), DrawRectComponent()
 let input_sys = createSystem(my_world, PlayerInputSystem(), RelativePositionComponent(), PlayerInputComponent())
 let relative_position_sys = createSystem(my_world, RelativePositionSystem(), RelativePositionComponent(), AbsolutePositionComponent(), ParentComponent())
 let animation_sys = createSystem(my_world, AnimationSystem(), AbsolutePositionComponent(), Sprite(), AnimationInfo())
-let physics_sys = createSystem(my_world, PhysicsSystem(name: "physics"), AbsolutePositionComponent(), PhysicsBodyComponent(), PhysicsShapeComponent())
+let physics_sys = createSystem(my_world, PhysicsSystem(name: "physics"), RelativePositionComponent(), PhysicsBodyComponent(), PhysicsShapeComponent())
 
 
 #SDL setup
