@@ -28,14 +28,14 @@ type
         data: seq[int]
 
     TileMap = ref object of RootObj
-        layers: seq[TileMapLayer]
-        tileSets: seq[TileSetMapping]
+        layers*: seq[TileMapLayer]
+        tileSets*: seq[TileSetMapping]
 
     TileMapManager = ref object of RootObj
         directory: string
         spriteManager: SpriteManager
-        tileSets: Table[string, TileSet]
-        tileMaps: Table[string, TileMap]
+        tileSets*: Table[string, TileSet]
+        tileMaps*: Table[string, TileMap]
 
 proc newTileMapManager*(directory: string, renderer: RendererPtr): TileMapManager = 
 
@@ -68,6 +68,7 @@ proc loadTileset*(self: TileMapManager, handle: string): TileSet =
     )
 
     self.tileSets[handle] = tileSet
+    return tileSet
 
 proc getOrLoadTileset*(self: TileMapManager, handle: string): TileSet =
     if self.tileSets.hasKey(handle):

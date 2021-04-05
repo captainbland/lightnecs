@@ -18,6 +18,6 @@ proc test(): void =
 
     let tilemap = tilemap_manager.loadTilemap("devtilemap")
 
-    print tilemap
+    print tilemap.tileSets
 
 test()
