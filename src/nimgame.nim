@@ -72,8 +72,7 @@ let player_entity_2 = createEntity(my_world,
  DrawRectComponent(width: 50, height: 50),
  AbsolutePositionComponent(), 
  RelativePositionComponent(pos:vec2i(100,10)), 
- PlayerInputComponent(),
- ParentComponent(entity:player_entity))
+ PlayerInputComponent())
 
 createEntity(my_world,
  DrawRectComponent(width:50, height:50), 
@@ -88,22 +87,6 @@ let destroyed_entity = createEntity(my_world,
  RelativePositionComponent(pos:vec2i(50,50)),
  ParentComponent(entity: player_entity))
 
-
-
-# threading currently won't work because of globals
-# type HasThread = object
-#     mythread: Thread[tuple[w: World, rsys: RelativePositionSystem, isys: PlayerInputSystem]]
-
-# var thread = HasThread().mythread
-
-# proc movementThread(params: tuple[w: World, rsys: RelativePositionSystem, isys: PlayerInputSystem]) {.thread.} =
-#     var (w, rsys, isys) = params
-#     while true:
-#         rsys.run(w, 1.0)
-#         isys.on_update(w, 1.0)
-#         sleep(16)
-
-# createThread(thread, movementThread, (my_world, relative_position_sys, input_sys))
 
 var
     evt = sdl2.defaultEvent

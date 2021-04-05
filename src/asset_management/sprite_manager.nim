@@ -36,10 +36,11 @@ type
 proc newSpriteManager*(directory: string, renderer:RendererPtr): SpriteManager =
     SpriteManager(sprites: initTable[string, Sprite](), directory: directory, renderer: renderer)
 
-proc getPath(directory, handle: string): string = directory & "/" & handle
+proc getPath*(directory, handle: string): string = directory & "/" & handle
 
 proc loadSprite*(self: SpriteManager, handle: string): Sprite =
     echo "loading sprite from", getPath(self.directory, handle)
+    #danger: should be refactored to return Option and None if cannot load
     let texture = sdl_img.loadTexture(self.renderer, getPath(self.directory, handle) & SPRITESHEET_EXT)
     echo "texture nil: ", texture == nil
 
@@ -57,6 +58,13 @@ proc getSprite*(self: SpriteManager, handle: string): Option[Sprite] =
         none(Sprite)
 
 
+proc getOrLoadSprite*(self: SpriteManager, handle: string): Sprite =
+    let maybeSprite = getSprite(self, handle)
+
+    if maybeSprite.isNone():
+        return loadSprite(self, handle)
+    else:
+        return maybeSprite.get()
 
 
 proc releaseSprite*(self: SpriteManager, handle: string): void =
