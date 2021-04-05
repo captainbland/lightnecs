@@ -4,7 +4,8 @@ import chipmunk/chipmunk
 import ecslib/ecs
 import ecslib/[parent_component, children_component]
 import components/[draw_rect_component, position_component, player_input_component, physics_components]
-import systems/[draw_rect_system, player_input_system, relative_position_system, animation_system, physics_system, tilemap_system]
+import systems/[draw_rect_system, player_input_system, relative_position_system, animation_system,
+                physics_system, tilemap_system, physics_visualisation_system]
 import asset_management/[sprite_manager, tilemap_manager]
 import glm
 
@@ -29,7 +30,7 @@ let relative_position_sys = createSystem(my_world, RelativePositionSystem(), Rel
 let animation_sys = createSystem(my_world, AnimationSystem(), AbsolutePositionComponent(), Sprite(), AnimationInfo())
 let physics_sys = createSystem(my_world, PhysicsSystem(name: "physics"), RelativePositionComponent(), PhysicsBodyComponent(), PhysicsShapeComponent())
 let tilemap_sys = createSystem(my_world, TilemapSystem(name: "tilemap"), TileMap())
-
+let physics_vis_sys = createSystem(my_world, PhysicsVisualisationSystem(),  PhysicsShapeComponent())
 echo "tilemap_sys name: ", tilemap_sys.name
 
 #SDL setup
@@ -54,7 +55,7 @@ let player_entity = createEntity(my_world,
  flaremage_sprite,
  flaremage_anim,
  AbsolutePositionComponent(), 
- RelativePositionComponent(pos:vec2i(10,10)), 
+ RelativePositionComponent(pos:vec2i(200,10)), 
  PlayerInputComponent(),
  ParentComponent(entity:root_entity),
  PhysicsBodyComponent(),
@@ -117,6 +118,7 @@ while runGame:
     tilemap_sys.run(render)
 
     animation_sys.run(my_world, render)
+    physics_vis_sys.run(render)
     render.present
 
 destroy render

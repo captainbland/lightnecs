@@ -5,6 +5,9 @@ import ../ecslib/ecs
 import sequtils
 import sugar
 import print
+import ../components/physics_components
+import ../chipmunk/chipmunk
+import glm
 type
     TilemapSystem* = ref object of MySystem
 
@@ -12,6 +15,48 @@ type
     SourceMapping = ref object of RootObj
         tileset*: TileSet
         sourceRect*: sdl2.Rect
+
+proc generateCollisionGeometry(tilemap: TileMap, space: SpacePtr): void = 
+    var basic_shapes: seq[seq[Vec2d]] = @[
+        @[],
+        @[vec2d(0,0), vec2d(32,0), vec2d(32,32), vec2d(0,32)], # square
+        @[vec2d(0,32), vec2d(32,0), vec2d(32,32)], # 45 degree right triangle
+        @[vec2d(32,32), vec2d(0,0), vec2d(0,32)], # 45 degree left triangle
+        @[vec2d(0,32), vec2d(32,16), vec2d(32,32)], #  45/2 degree right triangle bottom
+        @[vec2d(32,32), vec2d(0,16), vec2d(0,32)], # 45/2 degree left triangle bottom
+        @[vec2d(0,16), vec2d(32,0), vec2d(32,16)], #  45/2 degree right triangle top
+        @[vec2d(16,32), vec2d(0,0), vec2d(0,16)], # 45/2 degree left triangle top
+    ]
+
+    
+
+    let collisions_layer:TileMapLayer = tilemap.layers.filter((l) => l.name == "collisions")[0]
+    let firstId = tilemap.tileSets.filter((s) => s.tileset.handle == "collisiontiles")[0].firstId
+
+    var current_index = 0
+    for y in 0..collisions_layer.height-1:
+        for x in 0..collisions_layer.width-1:
+
+            let pos = vec2d(float64(x*tilemap.tileWidth), float64(y*tilemap.tileHeight))
+            let shape_id = collisions_layer.data[current_index]-firstId
+
+            echo "absolute id: ", collisions_layer.data[current_index], " shape id: ", shape_id, " firstId: ", firstId
+
+            if collisions_layer.data[current_index] == 0:
+                continue
+            var this_shape:seq[Vec2d] = basic_shapes[shape_id].map((p) => p + pos)
+            let shape = newPolyShape(space.staticBody, cint(len(this_shape)), addr this_shape[0], vec2d(0,0))
+            shape.setFriction(1.0)
+            discard space.addShape(shape)
+            current_index += 1
+
+
+
+method onAddEntity(self: TilemapSystem, entity: Entity): void =
+    let tilemap = getComponent[TileMap](self.world, entity)
+    let space = getComponent[SpaceComponent](self.world, entity)
+    generateCollisionGeometry(tilemap, space.space)
+
 
 proc generateSourceRects(tilemap: TileMap): seq[SourceMapping] =
     var gid = 0

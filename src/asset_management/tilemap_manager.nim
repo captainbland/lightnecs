@@ -19,6 +19,7 @@ type
         imageHeight*: int
         spacing*: int
         columns*: int
+        handle*: string
     
     TileSetMapping* = ref object of RootObj
         firstId*: int
@@ -28,12 +29,14 @@ type
         width*: int
         height*: int
         data*: seq[int]
+        name*: string
 
     TileMap* = ref object of RootObj
         layers*: seq[TileMapLayer]
         tileSets*: seq[TileSetMapping]
         tileWidth*: int 
         tileHeight*: int
+        manager*: TileMapManager
     TileMapManager* = ref object of RootObj
         directory: string
         spriteManager: SpriteManager
@@ -51,8 +54,6 @@ proc fileNameToHandle(handle: string, ext: string): string =
     return handle.split(ext)[0]
 
 proc loadTileset*(self: TileMapManager, handle: string): TileSet = 
-    
-
     let raw_json = json.parseFile(getPath(self.directory, handle) & JSON_EXT)
     let cols = raw_json["columns"].getInt
     let tileWidth = raw_json["tilewidth"].getInt
@@ -71,7 +72,8 @@ proc loadTileset*(self: TileMapManager, handle: string): TileSet =
         imageWidth: imageWidth,
         imageHeight: imageHeight,
         spacing: spacing,
-        sprite: sprite
+        sprite: sprite,
+        handle: handle
     )
 
     self.tileSets[handle] = tileSet
@@ -97,7 +99,8 @@ proc loadTilemap*(self: TileMapManager, handle: string): TileMap =
         let tileMapLayer = TileMapLayer(
             data: data,
             width: layer["width"].getInt(),
-            height: layer["height"].getInt()
+            height: layer["height"].getInt(),
+            name: layer["name"].getStr()
         )
         layers.add(tileMapLayer)
     
@@ -116,5 +119,6 @@ proc loadTilemap*(self: TileMapManager, handle: string): TileMap =
         layers: layers,
         tilesets: tilesets,
         tileWidth: raw_json["tilewidth"].getInt(),
-        tileHeight: raw_json["tileheight"].getInt()
+        tileHeight: raw_json["tileheight"].getInt(),
+        manager: self
     )
