@@ -54,7 +54,7 @@ proc newSystemNeedingComponentsImpl[T](the_world: World, the_system: T, componen
 
 
 proc newSystemNeedingComponentsImpl[T, S](the_world: World, the_system: T, component: S): T =
-    let system_builder = newSystemBuilder(the_world, the_system).needsComponent(component).done()
+    newSystemBuilder(the_world, the_system).needsComponent(component).done()
 
 
 template createSystem*(the_world: World, the_system: untyped, components: varargs[untyped]): untyped =

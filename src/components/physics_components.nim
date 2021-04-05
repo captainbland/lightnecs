@@ -3,7 +3,6 @@ import ../chipmunk/chipmunk
 type
     PhysicsBodyComponent* = ref object of RootObj
         body*: BodyPtr
-        space*: SpacePtr
     
     ShapeType* = enum 
         Rectangle

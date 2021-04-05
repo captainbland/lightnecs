@@ -21,8 +21,8 @@ proc run*(self: DrawRectSystem, my_world: World, renderer: RendererPtr) =
         renderer.setDrawColor 255, 255, 255, 255 # white
         var r = rect(
             cint(pos.pos.x), cint(pos.pos.y),
-            cint(rect.width), cint(rect.height)
-        )
+            cint(rect.width), cint(rect.height))
+            
         renderer.fillRect r
 
     for entity in self.entities:

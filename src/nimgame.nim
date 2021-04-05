@@ -4,8 +4,8 @@ import chipmunk/chipmunk
 import ecslib/ecs
 import ecslib/[parent_component, children_component]
 import components/[draw_rect_component, position_component, player_input_component, physics_components]
-import systems/[draw_rect_system, player_input_system, relative_position_system, animation_system, physics_system]
-import asset_management/sprite_manager
+import systems/[draw_rect_system, player_input_system, relative_position_system, animation_system, physics_system, tilemap_system]
+import asset_management/[sprite_manager, tilemap_manager]
 import glm
 
 import asset_management/sprite_manager
@@ -28,7 +28,9 @@ let input_sys = createSystem(my_world, PlayerInputSystem(), RelativePositionComp
 let relative_position_sys = createSystem(my_world, RelativePositionSystem(), RelativePositionComponent(), AbsolutePositionComponent(), ParentComponent())
 let animation_sys = createSystem(my_world, AnimationSystem(), AbsolutePositionComponent(), Sprite(), AnimationInfo())
 let physics_sys = createSystem(my_world, PhysicsSystem(name: "physics"), RelativePositionComponent(), PhysicsBodyComponent(), PhysicsShapeComponent())
+let tilemap_sys = createSystem(my_world, TilemapSystem(name: "tilemap"), TileMap())
 
+echo "tilemap_sys name: ", tilemap_sys.name
 
 #SDL setup
 window = createWindow("ECSy game", 100, 100, 640,480, SDL_WINDOW_SHOWN)
@@ -38,9 +40,14 @@ render = createRenderer(window, -1, Renderer_Accelerated or Renderer_PresentVsyn
 var my_sprite_manager = newSpriteManager("assets/sprites", render)
 let (flaremage_sprite, flaremage_anim) = my_sprite_manager.loadSpritesheet("flaremage-stand-left")
 
+var my_tilemap_manager = newTileMapManager("assets/sprites/tilemaps", render)
+let tilemap = my_tilemap_manager.loadTilemap("devtilemap")
+
+
+
 #entities
 my_world.addComponent(my_world.globalEntity, SpaceComponent(space: space))
-
+my_world.addComponent(my_world.globalEntity, tilemap)
 let root_entity = createEntity(my_world, AbsolutePositionComponent(pos:vec2i(0,0)))
 
 let player_entity = createEntity(my_world,
@@ -91,7 +98,6 @@ let destroyed_entity = createEntity(my_world,
 var
     evt = sdl2.defaultEvent
     runGame = true
-
 while runGame:
     while pollEvent(evt):
         if evt.kind == QuitEvent:
@@ -106,7 +112,10 @@ while runGame:
     relative_position_sys.run(my_world, 1.0)
     render.setDrawColor 0,0,0,255
     render.clear
+    echo "tilemap sys: ", tilemap_sys == nil
     draw_rect_sys.run(my_world, render)
+    tilemap_sys.run(render)
+
     animation_sys.run(my_world, render)
     render.present
 
