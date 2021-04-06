@@ -19,12 +19,12 @@ type
 proc generateCollisionGeometry(tilemap: TileMap, space: SpacePtr): void = 
     var basic_shapes: seq[seq[Vec2d]] = @[
         @[],
-        @[vec2d(0,0), vec2d(32,0), vec2d(32,32), vec2d(0,32)], # square
-        @[vec2d(0,32), vec2d(32,0), vec2d(32,32)], # 45 degree right triangle
+        @[vec2d(0,0),  vec2d(0,32), vec2d(32,32), vec2d(32,0)], # square
+        @[vec2d(0,32), vec2d(32,32), vec2d(32,0)], # 45 degree right triangle
         @[vec2d(32,32), vec2d(0,0), vec2d(0,32)], # 45 degree left triangle
-        @[vec2d(0,32), vec2d(32,16), vec2d(32,32)], #  45/2 degree right triangle bottom
+        @[vec2d(0,32), vec2d(32,32), vec2d(32,16)], #  45/2 degree right triangle bottom
         @[vec2d(32,32), vec2d(0,16), vec2d(0,32)], # 45/2 degree left triangle bottom
-        @[vec2d(0,16), vec2d(32,0), vec2d(32,16)], #  45/2 degree right triangle top
+        @[vec2d(0,16), vec2d(32,16), vec2d(32,0)], #  45/2 degree right triangle top
         @[vec2d(16,32), vec2d(0,0), vec2d(0,16)], # 45/2 degree left triangle top
     ]
 
@@ -40,15 +40,21 @@ proc generateCollisionGeometry(tilemap: TileMap, space: SpacePtr): void =
             let pos = vec2d(float64(x*tilemap.tileWidth), float64(y*tilemap.tileHeight))
             let shape_id = collisions_layer.data[current_index]-firstId
 
-            echo "absolute id: ", collisions_layer.data[current_index], " shape id: ", shape_id, " firstId: ", firstId
 
             if collisions_layer.data[current_index] == 0:
+                current_index += 1
+
                 continue
-            var this_shape:seq[Vec2d] = basic_shapes[shape_id].map((p) => p + pos)
+            else:
+                echo "absolute id: ", collisions_layer.data[current_index], " shape id: ", shape_id, " firstId: ", firstId
+
+            var this_shape:seq[Vec2d] = basic_shapes[shape_id+1].map((p) => p + pos)
+            
             let shape = newPolyShape(space.staticBody, cint(len(this_shape)), addr this_shape[0], vec2d(0,0))
             shape.setFriction(1.0)
             discard space.addShape(shape)
             current_index += 1
+
 
 
 

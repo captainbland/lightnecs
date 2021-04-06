@@ -118,7 +118,7 @@ while runGame:
     tilemap_sys.run(render)
 
     animation_sys.run(my_world, render)
-    physics_vis_sys.run(render)
+    #physics_vis_sys.run(render)
     render.present
 
 destroy render

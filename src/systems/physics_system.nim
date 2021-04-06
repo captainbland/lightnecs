@@ -22,13 +22,15 @@ method onAddEntity*(self: PhysicsSystem, entity: Entity): void =
             let shape = newBoxShape(body, shape_component.width, shape_component.height)
             body_component.body = space.addBody(body)
             shape_component.chipmunkShape = space.addShape(shape)
+            shape_component.chipmunkShape.setFriction(1.0)
             
 
 
 proc run*(self: PhysicsSystem) =
-    var timeStep = 1.0/30.0
+    var timeStep = 1.0/60.0
 
     let space_component = getComponent[SpaceComponent](self.world, self.world.globalEntity)
+    space_component.space.step(timeStep)
     space_component.space.step(timeStep)
 
     for entity in self.entities:
