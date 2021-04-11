@@ -58,7 +58,7 @@ proc updateJump(self: JumpingSystem, entity: Entity): void =
         
 
         elif jump_state == ON_AIR:
-            if getTime() - jump_state_component.jump_started < initDuration(milliseconds=500):
+            if getTime() - jump_state_component.jump_started < initDuration(milliseconds=250):
                 physics_body.setVel(vec2d(physics_body.getVel.x,-100))
 
 

@@ -64,7 +64,7 @@ let player_entity = createEntity(my_world,
  PlayerInputComponent(),
  ParentComponent(entity:root_entity),
  PhysicsBodyComponent(),
- PhysicsShapeComponent(shapeType: physics_components.ShapeType.Rectangle, width:26, height:32),
+ PhysicsShapeComponent(shapeType: physics_components.ShapeType.Circle, diameter: 32),
  JumpStateComponent())
 
 # # uncomment for entity spam fun
@@ -125,7 +125,7 @@ while runGame:
     tilemap_sys.run(render)
 
     animation_sys.run(my_world, render)
-    physics_vis_sys.run(render)
+    #physics_vis_sys.run(render)
     render.present
 
 destroy render

@@ -5,7 +5,7 @@ type
         body*: BodyPtr
     
     ShapeType* = enum 
-        Rectangle
+        Rectangle, Circle
 
     PhysicsShapeComponent* = ref object of RootObj
         chipmunkShape*: ShapePtr
@@ -13,6 +13,8 @@ type
             of Rectangle:
                 width*: float
                 height*: float
+            of Circle:
+                diameter*: float
     
     SpaceComponent* = ref object of RootObj
         space*: SpacePtr

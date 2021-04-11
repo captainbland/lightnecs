@@ -25,7 +25,15 @@ method onAddEntity*(self: PhysicsSystem, entity: Entity): void =
             shape_component.chipmunkShape = space.addShape(shape)
             shape_component.chipmunkShape.setFriction(0.5)
             shape_component.chipmunkShape.setCollisionType(PLAYER_COLLISION)
-
+        of Circle:
+            let moment = MomentForCircle(Inf, shape_component.diameter, 0.0, vec2d(0,0))
+            let body = newBody(1.0, moment)
+            let shape = newCircleShape(body, shape_component.diameter/2, vec2d(0,0))
+            body_component.body = space.addBody(body)
+            body.setPos(vec2d(positionComponent.pos))
+            shape_component.chipmunkShape = space.addShape(shape)
+            shape_component.chipmunkShape.setFriction(1.0)
+            shape_component.chipmunkShape.setCollisionType(PLAYER_COLLISION)
             
 
 proc run*(self: PhysicsSystem) =
