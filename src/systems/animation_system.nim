@@ -26,10 +26,10 @@ proc calcSourceRect(frame: Frame): sdl2.Rect =
     return sdl_rect
 
 proc calcDestRect(pos: AbsolutePositionComponent, frame: Frame): sdl2.Rect =
-    var sdl_rect = sdl2.rect(cint(pos.pos.x),
-         cint(pos.pos.y),
-         cint(frame.frame_width*2),
-         cint(frame.frame_height*2))
+    var sdl_rect = sdl2.rect(cint(pos.pos.x - int(frame.frame_width/2)),
+         cint(pos.pos.y - int(frame.frame_width/2)),
+         cint(frame.frame_width),
+         cint(frame.frame_height))
 
     return sdl_rect
 

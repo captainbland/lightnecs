@@ -52,6 +52,7 @@ proc generateCollisionGeometry(tilemap: TileMap, space: SpacePtr): void =
             
             let shape = newPolyShape(space.staticBody, cint(len(this_shape)), addr this_shape[0], vec2d(0,0))
             shape.setFriction(1.0)
+            shape.setCollisionType(GROUND_COLLISION)
             discard space.addShape(shape)
             current_index += 1
 

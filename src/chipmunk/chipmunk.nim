@@ -944,14 +944,14 @@ proc getShapes*(arb: ArbiterPtr, a, b: var ShapePtr) {.inline.} =
 #/ A macro shortcut for defining and retrieving the shapes from an arbiter.
 #define CP_ARBITER_GET_SHAPES(arb, a, b) cpShape *a, *b; cArbiterPtrGetShapes(arb, &a, &b);
 template getShapes*(arb: ArbiterPtr, name1, name2: untyped): untyped  =
-  var name1, name2: ShapePtr
+  var name1, name2 {.inject.}: ShapePtr
   getShapes(arb, name1, name2)
 
 
 #/ Return the colliding bodies involved for this arbiter.
 #/ The order of the cpSpace.collision_type the bodies are associated with values will match
 #/ the order set when the collision handler was registered.
-#proc getBodies*(arb: ArbiterPtr, a, b: var BodyPtr) {.inline.} = 
+# proc getBodies*(arb: ArbiterPtr, a, b: var BodyPtr) {.inline.} = 
 #  getShapes(arb, shape1, shape2)
 #  a = shape1.body
 #  b = shape2.body
@@ -959,10 +959,10 @@ template getShapes*(arb: ArbiterPtr, name1, name2: untyped): untyped  =
 #/ A macro shortcut for defining and retrieving the bodies from an arbiter.
 #define CP_ARBITER_GET_BODIES(arb, a, b) cpBody *a, *b; cArbiterPtrGetBodies(arb, &a, &b);
 template getBodies*(arb: ArbiterPtr, name1, name2: untyped): untyped =
-  var name1, name2: PBOdy
+  var name1, name2 {.inject.}: BodyPtr
   getBodies(arb, name1, name2)
 
-proc isFirsContact*(arb: ArbiterPtr): bool {.inline.} =
+proc isFirstContact*(arb: ArbiterPtr): bool {.inline.} =
   result = arb.state == ArbiterStateFirstColl
 
 proc getCount*(arb: ArbiterPtr): cint {.inline.} =

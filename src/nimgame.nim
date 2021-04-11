@@ -3,9 +3,10 @@ import os
 import chipmunk/chipmunk
 import ecslib/ecs
 import ecslib/[parent_component, children_component]
-import components/[draw_rect_component, position_component, player_input_component, physics_components]
+import components/[draw_rect_component, position_component, player_input_component, physics_components,
+                    jump_state]
 import systems/[draw_rect_system, player_input_system, relative_position_system, animation_system,
-                physics_system, tilemap_system, physics_visualisation_system]
+                physics_system, tilemap_system, physics_visualisation_system, jumping_system]
 import asset_management/[sprite_manager, tilemap_manager]
 import glm
 
@@ -13,11 +14,14 @@ import asset_management/sprite_manager
 import os
 discard sdl2.init(INIT_EVERYTHING)
 
+const cp_collision_slop = 0.01
+
 var
     window: WindowPtr
     render: RendererPtr
 let meter = (32.0)/1.61
 var space = chipmunk.newSpace()
+space.setIterations(10)
 space.gravity = vec2d(0,9.8*meter)
 var my_world: World = getWorld()
 echo my_world.am_world
@@ -25,12 +29,13 @@ echo my_world.am_world
 
 # systems
 let draw_rect_sys = createSystem(my_world, DrawRectSystem(), DrawRectComponent(), AbsolutePositionComponent())
-let input_sys = createSystem(my_world, PlayerInputSystem(), RelativePositionComponent(), PlayerInputComponent())
+let input_sys = createSystem(my_world, PlayerInputSystem(), RelativePositionComponent(), PlayerInputComponent(), PhysicsBodyComponent(), JumpStateComponent())
 let relative_position_sys = createSystem(my_world, RelativePositionSystem(), RelativePositionComponent(), AbsolutePositionComponent(), ParentComponent())
 let animation_sys = createSystem(my_world, AnimationSystem(), AbsolutePositionComponent(), Sprite(), AnimationInfo())
 let physics_sys = createSystem(my_world, PhysicsSystem(name: "physics"), RelativePositionComponent(), PhysicsBodyComponent(), PhysicsShapeComponent())
 let tilemap_sys = createSystem(my_world, TilemapSystem(name: "tilemap"), TileMap())
 let physics_vis_sys = createSystem(my_world, PhysicsVisualisationSystem(),  PhysicsShapeComponent())
+let jumping_sys = createSystem(my_world, JumpingSystem(), JumpStateComponent(), PhysicsBodyComponent())
 echo "tilemap_sys name: ", tilemap_sys.name
 
 #SDL setup
@@ -59,7 +64,8 @@ let player_entity = createEntity(my_world,
  PlayerInputComponent(),
  ParentComponent(entity:root_entity),
  PhysicsBodyComponent(),
- PhysicsShapeComponent(shapeType: physics_components.ShapeType.Rectangle, width:26, height:32))
+ PhysicsShapeComponent(shapeType: physics_components.ShapeType.Rectangle, width:26, height:32),
+ JumpStateComponent())
 
 # # uncomment for entity spam fun
 # for x in 0..100:
@@ -111,6 +117,7 @@ while runGame:
     physics_sys.run()
     input_sys.on_update(my_world, 1.0)
     relative_position_sys.run(my_world, 1.0)
+    jumping_sys.run()
     render.setDrawColor 0,0,0,255
     render.clear
     echo "tilemap sys: ", tilemap_sys == nil
@@ -118,7 +125,7 @@ while runGame:
     tilemap_sys.run(render)
 
     animation_sys.run(my_world, render)
-    #physics_vis_sys.run(render)
+    physics_vis_sys.run(render)
     render.present
 
 destroy render

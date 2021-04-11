@@ -14,22 +14,25 @@ method onAddEntity*(self: PhysicsSystem, entity: Entity): void =
     var shape_component = getComponent[PhysicsShapeComponent](self.world, entity)
     var body_component = getComponent[PhysicsBodyComponent](self.world, entity)
     let space = getComponent[SpaceComponent](self.world, self.world.globalEntity).space
-
+    let positionComponent = getComponent[RelativePositionComponent](self.world, entity)
     case shape_component.shapeType:
         of Rectangle:
-            let moment = MomentForBox(1.0, shape_component.width, shape_component.height)
+            let moment = MomentForBox(Inf, shape_component.width, shape_component.height)
             let body = newBody(1.0, moment)
             let shape = newBoxShape(body, shape_component.width, shape_component.height)
             body_component.body = space.addBody(body)
+            body.setPos(vec2d(positionComponent.pos))
             shape_component.chipmunkShape = space.addShape(shape)
-            shape_component.chipmunkShape.setFriction(1.0)
-            
+            shape_component.chipmunkShape.setFriction(0.5)
+            shape_component.chipmunkShape.setCollisionType(PLAYER_COLLISION)
 
+            
 
 proc run*(self: PhysicsSystem) =
     var timeStep = 1.0/60.0
 
     let space_component = getComponent[SpaceComponent](self.world, self.world.globalEntity)
+    space_component.space.step(timeStep)
     space_component.space.step(timeStep)
     space_component.space.step(timeStep)
 

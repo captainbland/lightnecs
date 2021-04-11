@@ -17,6 +17,10 @@ type
     SpaceComponent* = ref object of RootObj
         space*: SpacePtr
 
+# collision types:
+
+const PLAYER_COLLISION*: CollisionType = 1
+const GROUND_COLLISION*: CollisionType = 2 
+
 # proc loadPhysicsBody(space: SpacePtr, mass=5.0): PhysicsBody =
 #     space.addBody(chipmunk.newBody(mass))
-    
